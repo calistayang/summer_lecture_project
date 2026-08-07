@@ -27,8 +27,19 @@ def analyze_content(user_inputs: dict) -> dict:
             "description": image.get("description", ""),
             "purpose": image.get("purpose", "補充說明"),
             "suggested_section": _suggest_section(image.get("type", "")),
+            "suggested_slides": 2 if key == "results" and len(content) > 300 else 1,
         })
+    if len(content) < 20:
+        warnings.append(f"{label}內容較短，建議補充資料。")
+
+    if len(content) > 1000:
+        warnings.append(f"{label}內容較長，產生簡報時將拆分重點。")
+
+    if len(images) > user_inputs["requirements"]["pages"] - 2:
+        warnings.append("圖片數量較多，部分圖片可能無法配置到投影片。")
+    
     return {"sections": sections, "images": images, "warnings": [] if images else ["未上傳圖片，可先產生純文字版 Prompt。"]}
+            
 
 
 def _suggest_section(image_type: str) -> str:
