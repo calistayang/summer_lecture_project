@@ -13,7 +13,7 @@
 
 ### 1. 安裝正確的 Python
 
-目前這台電腦的 `python` 指向 GTKWave 附帶的損壞版本。請從 [python.org](https://www.python.org/downloads/windows/) 安裝正式 Python，安裝時勾選 **Add python.exe to PATH**，完成後完全關閉並重開 VS Code。
+請從 [python.org](https://www.python.org/downloads/windows/) 安裝正式 Python，安裝時勾選 **Add python.exe to PATH**，完成後完全關閉並重開 VS Code。
 
 在 VS Code 選「終端機 → 新增終端機」，執行：
 
@@ -23,7 +23,6 @@ python --version
 git --version
 ```
 
-`where.exe python` 的第一個結果不應是 `C:\iverilog\gtkwave\bin\python.exe`。若仍是它，請在 Windows「編輯系統環境變數 → 環境變數 → Path」把正式 Python 路徑移到 GTKWave 前面，再重開 VS Code。
 
 ### 2. 開啟專案與建立虛擬環境
 
