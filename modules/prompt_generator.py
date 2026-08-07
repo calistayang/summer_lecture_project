@@ -1,4 +1,5 @@
 import json
+from collections import Counter, defaultdict
 
 
 def generate_final_prompt(user_inputs: dict, style_rules: dict, analysis: dict) -> str:
@@ -18,13 +19,32 @@ def generate_final_prompt(user_inputs: dict, style_rules: dict, analysis: dict) 
         "## 逐頁規格",
     ]
     content_map = {item["section"]: item["content"] for item in analysis["sections"]}
+    section_counts = Counter(sections)
+
+    section_chunks = {
+        section: _split_content(content_map.get(section, ""), count)
+        for section, count in section_counts.items()
+        if section != "cover"
+    }
+
+    section_indexes = defaultdict(int)
+
     used_images: set[str] = set()
     for number, section in enumerate(sections, start=1):
         matched = [img for img in images if img["suggested_section"] == section]
         image = next((img for img in matched if img["filename"] not in used_images), None)
         if image:
             used_images.add(image["filename"])
-        title, message, text = _slide_content(number, pages, section, req["topic"], content_map)
+        if section == "cover":
+            slide_text = req["topic"]
+        else:
+            index = section_indexes[section]
+            slide_text = section_chunks[section][index]
+            section_indexes[section] += 1
+
+        title, message, text = _slide_content(
+            number, pages, section, req["topic"], slide_text
+        )
         lines.extend([
             f"### Slide Number: {number}",
             f"Title: {title}",
@@ -52,12 +72,42 @@ def _allocate_sections(pages: int) -> list[str]:
     return ["cover", *middle[: pages - 2], "conclusion"]
 
 
-def _slide_content(number: int, pages: int, section: str, topic: str, content: dict) -> tuple[str, str, str]:
+def _slide_content(
+    number: int,
+    pages: int,
+    section: str,
+    topic: str,
+    slide_text: str,
+) -> tuple[str, str, str]:
     if section == "cover":
-        return topic, "建立報告主題與研究範圍", f"{topic}"
-    labels = {"background": "研究背景", "methods": "研究方法", "results": "研究結果", "conclusion": "結論"}
-    label = labels[section]
-    raw = content.get(section, "待使用者補充")
-    suffix = f"（{number}/{pages}）" if section == "results" else ""
-    return label + suffix, f"說明{label}的核心重點", raw
+        return topic, "建立報告主題與研究範圍", topic
 
+    labels = {
+        "background": "研究背景",
+        "methods": "研究方法",
+        "results": "研究結果",
+        "conclusion": "結論",
+    }
+
+    label = labels[section]
+    text = slide_text or "待使用者補充"
+    suffix = f"（{number}/{pages}）" if section == "results" else ""
+
+    return label + suffix, f"說明{label}的核心重點", text
+
+def _split_content(content: str, count: int) -> list[str]:
+    if count <= 1:
+        return [content]
+
+    sentences = [
+        sentence.strip()
+        for sentence in content.replace("。", "。\n").splitlines()
+        if sentence.strip()
+    ]
+
+    chunks = [""] * count
+    for index, sentence in enumerate(sentences):
+        target = index % count
+        chunks[target] = f"{chunks[target]}{sentence}".strip()
+
+    return [chunk or "待使用者補充" for chunk in chunks]
