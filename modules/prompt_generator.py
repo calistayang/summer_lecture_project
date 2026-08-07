@@ -10,7 +10,9 @@ def generate_final_prompt(user_inputs: dict, style_rules: dict, analysis: dict) 
     lines = [
         "# 學術簡報製作指令",
         f"主題：{req['topic']}",
-        f"對象：{req['audience']}｜時間：{req['duration_minutes']} 分鐘｜頁數：{pages}｜語言：{req['language']}",
+        f"對象：{req['audience']}｜時間：{req['duration_minutes']} 分鐘｜內容頁數：{pages}（不含模板封面）｜語言：{req['language']}",
+        "本任務只產生內容頁，不重新設計封面。Slide 1 必須是 Outline。",
+        "完成內容頁後，將投影片複製或套用至使用者提供的實驗室 PowerPoint 模板；保留母片、頁首頁尾、Logo 與頁碼位置。",
         "不得捏造數據或引用；資料不足時標示「待使用者補充」。",
         "",
         "## 視覺規則",
@@ -24,7 +26,7 @@ def generate_final_prompt(user_inputs: dict, style_rules: dict, analysis: dict) 
     section_chunks = {
         section: _split_content(content_map.get(section, ""), count)
         for section, count in section_counts.items()
-        if section != "cover"
+        if section != "outline"
     }
 
     section_indexes = defaultdict(int)
@@ -35,8 +37,8 @@ def generate_final_prompt(user_inputs: dict, style_rules: dict, analysis: dict) 
         image = next((img for img in matched if img["filename"] not in used_images), None)
         if image:
             used_images.add(image["filename"])
-        if section == "cover":
-            slide_text = req["topic"]
+        if section == "outline":
+            slide_text = "研究背景、研究方法、研究結果、結論與未來工作"
         else:
             index = section_indexes[section]
             slide_text = section_chunks[section][index]
@@ -64,12 +66,10 @@ def generate_final_prompt(user_inputs: dict, style_rules: dict, analysis: dict) 
 
 
 def _allocate_sections(pages: int) -> list[str]:
-    if pages == 3:
-        return ["cover", "results", "conclusion"]
     middle = ["background", "methods", "results", "results"]
     while len(middle) < pages - 2:
         middle.insert(-1, "results")
-    return ["cover", *middle[: pages - 2], "conclusion"]
+    return ["outline", *middle[: pages - 2], "conclusion"]
 
 
 def _slide_content(
@@ -79,8 +79,8 @@ def _slide_content(
     topic: str,
     slide_text: str,
 ) -> tuple[str, str, str]:
-    if section == "cover":
-        return topic, "建立報告主題與研究範圍", topic
+    if section == "outline":
+        return "Outline", "說明本次報告的研究敘事與主要章節", slide_text
 
     labels = {
         "background": "研究背景",

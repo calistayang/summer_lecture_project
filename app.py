@@ -14,17 +14,16 @@ UPLOAD_DIR = OUTPUT_DIR / "uploads"
 
 st.set_page_config(page_title="學術簡報 Prompt 產生器", page_icon="📊", layout="wide")
 st.title("學術簡報 Prompt 產生器")
-st.caption("輸入簡報需求、研究內容與圖片，產生結構化的簡報製作 Prompt。")
+st.caption("輸入研究內容與圖片，產生符合 NanoSTLab 實驗室優良簡報風格的製作 Prompt。")
+st.info("系統固定以實驗室教授與成員為報告對象，並自動套用 NanoSTLab 實驗室模板規則。")
 
 with st.form("presentation_form"):
     st.subheader("一、簡報需求")
     col1, col2 = st.columns(2)
     topic = col1.text_input("主題 *")
-    audience = col2.text_input("報告對象 *", placeholder="例如：大學教授與研究生")
-    duration = col1.number_input("報告時間（分鐘）*", 1, 180, 10)
-    pages = col2.number_input("投影片頁數 *", 5, 50, 8)
-    language = col1.selectbox("語言 *", ["繁體中文", "英文", "中英雙語"])
-    style = col2.selectbox("簡報風格 *", ["學術正式", "簡潔現代", "數據導向", "教學說明"])
+    duration = col2.number_input("報告時間（分鐘）*", 1, 180, 10)
+    pages = col1.number_input("內容投影片頁數（不含模板封面）*", 5, 50, 8)
+    language = col2.selectbox("語言 *", ["繁體中文", "英文", "中英雙語"])
 
     st.subheader("二、研究內容")
     background = st.text_area("研究背景 *", height=120)
@@ -43,7 +42,6 @@ with st.form("presentation_form"):
         description = st.text_input("圖片說明 *", key=f"description_{index}_{uploaded.name}")
         image_details.append((uploaded, image_type, purpose, description))
 
-    use_external_style = st.checkbox("使用成員二提供的 data/style_rules.json（若不存在則顯示錯誤）")
     submitted = st.form_submit_button("開始分析", type="primary")
 
 if submitted:
@@ -64,9 +62,9 @@ if submitted:
     user_inputs = {
         "schema_version": "1.0",
         "requirements": {
-            "topic": topic.strip(), "audience": audience.strip(),
+            "topic": topic.strip(), "audience": "實驗室教授與成員",
             "duration_minutes": int(duration), "pages": int(pages),
-            "language": language, "style": style,
+            "language": language, "style": "NanoSTLab 實驗室優良簡報風格",
         },
         "text_content": {
             "background": background.strip(), "methods": methods.strip(),
@@ -78,7 +76,7 @@ if submitted:
         for error in upload_errors:
             st.error(error)
     else:
-        style_path = BASE_DIR / "data" / "style_rules.json" if use_external_style else None
+        style_path = BASE_DIR / "data" / "style_rules.json"
         with st.spinner("正在驗證、分析並產生 Prompt…"):
             result = run_pipeline(user_inputs, OUTPUT_DIR, style_path)
         if not result["success"]:

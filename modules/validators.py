@@ -21,7 +21,7 @@ def validate_user_inputs(data: dict) -> list[str]:
 
     pages = requirements.get("pages")
     if not isinstance(pages, int) or not 5 <= pages <= 50:
-        errors.append("投影片頁數必須介於 5 到 50 頁，才能涵蓋封面、背景、方法、結果與結論。")
+        errors.append("內容投影片頁數必須介於 5 到 50 頁，才能涵蓋 Outline、背景、方法、結果與結論；模板封面不計入。")
 
     minutes = requirements.get("duration_minutes")
     if not isinstance(minutes, int) or not 1 <= minutes <= 180:

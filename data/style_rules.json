@@ -1,0 +1,164 @@
+{
+  "schema_version": "1.0",
+  "source": "member_2_adapted_from_lab_reference_decks",
+  "style_name": "NanoSTLab 實驗室簡報模板",
+  "reference_presentations": {
+    "primary": "ITRI-Meeting_Ming-Chun-Hong_20201119_Quantum-Computing_new.pptx",
+    "secondary": "Group-Meeting_Ming-Chun-Hong_20181220.pptx",
+    "rule": "主要依照 2020 年 16:9 簡報的視覺系統；2018 年 4:3 簡報只用於參考學術內容節奏，不可把新簡報改成 4:3。"
+  },
+  "template_workflow": {
+    "generate_cover_slide": false,
+    "first_generated_slide": "Outline",
+    "final_assembly": "AI 先產生內容頁，再將內容頁複製或套用至實驗室既有 PowerPoint 模板；封面直接使用模板中的封面版型並由使用者填入題目、姓名、指導教授與日期。",
+    "locked_elements": [
+      "實驗室封面",
+      "頂部標題區",
+      "底部實驗室識別區",
+      "Logo 位置",
+      "右下頁碼位置",
+      "模板母片與版面配置"
+    ],
+    "rule": "不得由 AI 重新設計或重畫模板固定元素，也不得把內容頁做成另一套現代化模板。"
+  },
+  "presentation_structure": {
+    "required_sections": [
+      "Outline",
+      "研究背景",
+      "研究方法",
+      "研究結果",
+      "結論與未來工作"
+    ],
+    "one_message_per_slide": true,
+    "progressive_disclosure": true,
+    "rule": "使用者指定的頁數是 AI 需要產生的內容頁數，不包含實驗室模板封面；Slide 1 必須是 Outline。複雜流程或多組實驗應拆頁。"
+  },
+  "visual_layout": {
+    "style": "學術圖像導向",
+    "preferred_patterns": [
+      "大圖搭配精簡標註",
+      "左側摘要、右側科學圖表",
+      "左右並列比較",
+      "流程或機制圖搭配短標籤",
+      "主要圖片搭配兩張輔助圖片"
+    ],
+    "avoid": [
+      "大段文字",
+      "過長條列",
+      "儀表板式版面",
+      "過度裝飾",
+      "與研究內容無關的圖示"
+    ],
+    "rule": "每頁選擇最適合科學內容的版面，不強制所有投影片使用相同配置。"
+  },
+  "color_palette": {
+    "primary_blue": "#376092",
+    "technical_emphasis_blue": "#0000FF",
+    "accent_yellow": "#F9CB07",
+    "main_text": "#000000",
+    "background": "#FFFFFF",
+    "warning_red": "#FF0000",
+    "supporting_light_blue": "#D3DCED",
+    "reference_gray": "#666666",
+    "rule": "顏色只用於建立資訊層級；若使用者提供參考簡報，優先沿用其可讀且一致的配色邏輯。"
+  },
+  "typography": {
+    "font_family": [
+      "Arial",
+      "Calibri",
+      "Noto Sans TC"
+    ],
+    "title_pt": 48,
+    "preferred_title_range_pt": "48–53",
+    "long_title_pt": 40,
+    "body_pt": 24,
+    "section_heading_pt": "26–28",
+    "minimum_body_pt": 21,
+    "caption_pt": "16–19",
+    "reference_pt": "10–11",
+    "rule": "若內容無法以最低字級清楚呈現，應拆分投影片，不得縮小文字硬塞。"
+  },
+  "slide_size": {
+    "aspect_ratio": "16:9",
+    "width_inch": 13.333,
+    "height_inch": 7.5,
+    "background_color": "#FFFFFF"
+  },
+  "template_geometry": {
+    "title_zone": "投影片頂部約 12% 高度，標題靠左並保持單行優先",
+    "content_zone": "所有研究內容放在標題區下方與頁尾上方，不可覆蓋母片固定元素",
+    "footer": "保留實驗室模板的藍黃識別、學校或實驗室名稱與圖形，不得重畫或遮蓋",
+    "page_number": "右下頁尾內，從 Outline 計為第 1 頁並依序增加",
+    "citation_zone": "頁尾正上方，使用約 10–11 pt 深灰文字"
+  },
+  "content_density": {
+    "title": "簡短且具體",
+    "visible_text": "優先使用短句、關鍵詞與數值重點",
+    "paragraphs": false,
+    "whitespace_ratio": "15%–25%",
+    "rule": "一張投影片只傳達一個主要訊息。"
+  },
+  "image_layout": {
+    "one_image": "使用單一主要圖片，約占可用寬度的 45%–70%",
+    "two_images": "左右並排並維持一致尺寸與對齊",
+    "three_images": "三欄、三階段流程或一主兩輔",
+    "four_images": "2×2 網格",
+    "rule": "只使用使用者提供的圖片及精確檔名；不得拉伸、遮住座標軸、圖例或重要標示。"
+  },
+  "data_and_formula_presentation": {
+    "data": "重要數值使用數值重點、精簡表格、左右比較或圖中標註呈現。",
+    "formula": "公式應獨立呈現並保留符號、上下標、單位與變數名稱。",
+    "rule": "只能使用使用者或來源文件明確提供的數據與公式。"
+  },
+  "citation_style": {
+    "position": "投影片底部",
+    "font_size_pt": 10,
+    "color": "#666666",
+    "rule": "每頁只列出與該頁直接相關且由使用者提供的來源；來源不足時標示『待補』。"
+  },
+  "speaker_notes_style": {
+    "length": "每頁約 2–5 句",
+    "purpose": "解釋主要科學訊息、圖片與結論的關係，必要時提供轉場。",
+    "rule": "講者備註不得加入來源資料中不存在的主張。"
+  },
+  "content_accuracy": {
+    "use_only_user_sources": true,
+    "missing_content_behavior": "標示『待使用者補充』或 null",
+    "prohibited": [
+      "捏造數值",
+      "捏造實驗結果",
+      "捏造公式",
+      "捏造引用",
+      "捏造圖片檔名",
+      "捏造研究結論"
+    ]
+  },
+  "reference_style_adaptation": {
+    "rule": "若使用者提供參考簡報或截圖，先分析其標題、頁首頁尾、配色、圖片比例、對齊與留白，再將視覺規則一致地套用到新簡報。",
+    "preserve": [
+      "視覺層級",
+      "標題處理",
+      "配色邏輯",
+      "圖片呈現方式",
+      "版面節奏",
+      "頁碼位置"
+    ],
+    "do_not_copy": [
+      "無關的科學內容",
+      "無關的數據",
+      "無關的圖片",
+      "無關的引用"
+    ]
+  },
+  "quality_control": {
+    "checks": [
+      "投影片數量符合使用者需求",
+      "每頁只有一個主要訊息",
+      "所有圖片檔名來自使用者輸入",
+      "沒有捏造數據或引用",
+      "文字與圖片不重疊",
+      "字級與留白保持可讀",
+      "研究背景、方法、結果與結論均有涵蓋"
+    ]
+  }
+}
