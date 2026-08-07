@@ -1,0 +1,11 @@
+{
+  "sections": [
+    {"section": "background", "label": "研究背景", "content": "範例背景", "character_count": 4, "priority": "medium"},
+    {"section": "methods", "label": "研究方法", "content": "範例方法", "character_count": 4, "priority": "medium"},
+    {"section": "results", "label": "研究結果", "content": "範例結果", "character_count": 4, "priority": "high"},
+    {"section": "conclusion", "label": "結論", "content": "範例結論", "character_count": 4, "priority": "high"}
+  ],
+  "images": [],
+  "warnings": ["此檔案只是資料契約範例。"]
+}
+
