@@ -1,0 +1,26 @@
+{
+  "schema_version": "1.0",
+  "requirements": {
+    "topic": "RRAM Mechanism Model",
+    "audience": "教授與研究生",
+    "duration_minutes": 10,
+    "pages": 8,
+    "language": "繁體中文",
+    "style": "學術正式"
+  },
+  "text_content": {
+    "background": "說明研究問題與現有技術限制。",
+    "methods": "說明元件結構、量測設備與實驗流程。",
+    "results": "呈現使用者實際提供的量測結果，不補造數值。",
+    "conclusion": "整理研究發現、限制與未來工作。"
+  },
+  "images": [
+    {
+      "filename": "iv_curve.png",
+      "type": "實驗結果圖",
+      "description": "元件的 I-V 量測曲線",
+      "purpose": "呈現電阻切換行為"
+    }
+  ]
+}
+
