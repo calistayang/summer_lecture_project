@@ -18,7 +18,7 @@ st.markdown(
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@500;700;900&display=swap');
 
-    /* 淡米白背景 */
+    /* 淡米白背景嗨嗨 */
     .stApp {
         background-color: #FAF7F0;
         color: #2F3542;
