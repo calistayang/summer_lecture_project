@@ -5,14 +5,87 @@
   "reference_presentations": {
     "primary": "ITRI-Meeting_Ming-Chun-Hong_20201119_Quantum-Computing_new.pptx",
     "secondary": "Group-Meeting_Ming-Chun-Hong_20181220.pptx",
-    "rule": "主要依照 2020 年 16:9 簡報的視覺系統；2018 年 4:3 簡報只用於參考學術內容節奏、流程拆頁、結果呈現與 Summary & Future Work 組織方式，不可把新簡報改成 4:3。參考簡報中的科學圖片、數據、公式、引用與研究內容只能作為風格分析依據，不得直接複製到其他主題的新簡報中。"
+    "inspected_primary_deck": {
+      "slide_count": 117,
+      "source_aspect_ratio": "16:9",
+      "source_size_points": "960 × 540",
+      "master_count": 1,
+      "layout_count": 3,
+      "observed_typography": {
+        "dominant_font": "Calibri",
+        "common_title_pt": 53.3,
+        "alternate_title_pt": "44–48",
+        "common_body_pt": "24–26.7",
+        "minimum_common_body_pt": 21.3,
+        "common_caption_pt": "14–18.7",
+        "adaptation_rule": "以 16:9 primary deck 的字級層級為主要依據：標題約 48–53 pt、正文約 24–26.7 pt、正文最低約 21 pt。來源檔中少數低於此範圍的密集文字、引用或舊內容不應成為新投影片縮字依據。"
+      },
+      "observed_content_patterns": [
+        "Outline 以彩色或正常對比顯示當前章節，其他章節淡化，形成章節進度與 progressive disclosure",
+        "同一概念以多張連續頁逐步加入元件、箭頭、公式或量測結果",
+        "classical 與 quantum、before 與 after、model 與 experiment 採左右並列比較",
+        "大型 scientific figure、circuit、graph 或公式占據主要內容區，文字只提供短標籤與必要解釋",
+        "複雜方法先提供全流程或架構總覽，再拆成原理、步驟、操作、量測或 readout 多頁",
+        "結果頁保留完整 axis、legend、unit、資料點與 figure label，並以藍色或紅色標出關鍵差異",
+        "Summary 將核心概念、演算法、硬體與應用以一張關係圖或少量高價值結論收束",
+        "Future work 使用具體研究方向、限制、下一步實驗或技術挑戰，不使用空泛結語"
+      ],
+      "fixed_shell_evidence": [
+        "內容頁頂部固定深藍長條與黃色短條",
+        "底部固定黃色學校識別區與藍色 NanoSTLab 區",
+        "National Chiao Tung University 與校徽識別",
+        "右下角固定白色頁碼",
+        "白色內容背景",
+        "單一 master 與三個既有 layouts"
+      ],
+      "patterns_not_to_copy": [
+        "來源檔中少數過密文字或過多 bullet points",
+        "為容納內容而使用過小字級",
+        "與新主題無關的 ENIAC、IBM、Quantum Computing、quantum gate、quantum dot、MTJ、MRAM 圖片",
+        "來源檔中的科學數據、公式、citation、研究結論與圖片檔名"
+      ]
+    },
+    "inspected_secondary_deck": {
+      "slide_count": 22,
+      "source_aspect_ratio": "4:3",
+      "source_size_points": "720 × 540",
+      "master_count": 1,
+      "layout_count": 2,
+      "observed_typography": {
+        "dominant_fonts": [
+          "Calibri",
+          "Arial"
+        ],
+        "common_title_pt": 40,
+        "common_body_pt": "20–28",
+        "common_citation_and_page_number_pt": "10–14",
+        "adaptation_rule": "上述字級是 2018 年 4:3 來源檔的觀察值，不是新簡報的輸出規格。新簡報仍依 typography 使用較大的 16:9 字級。"
+      },
+      "observed_content_patterns": [
+        "Outline 以深色顯示當前章節、淡灰顯示其他章節，作為章節進度提示",
+        "概念圖或元件圖搭配少量大型標籤",
+        "左右並列比較兩種狀態、模型或實驗結果",
+        "公式搭配物理意義圖、參數標示或實驗曲線",
+        "Extraction Flow 先顯示全流程，再用連續頁逐步聚焦各階段",
+        "結果頁以大型 graph、axis、legend、unit 與簡短數值結論為主",
+        "Summary & Future Work 使用研究物件、模型、量測與應用之間的視覺關係收束敘事"
+      ],
+      "fixed_shell_evidence": [
+        "內容頁頂部固定藍色長條與黃色短條",
+        "底部固定黃色學校識別區與藍色 NanoSTLab 區",
+        "校徽與 National Chiao Tung University 識別",
+        "右下角固定頁碼",
+        "單一 master 與兩個既有 layouts"
+      ]
+    },
+    "rule": "新簡報必須以已完整檢視的 2020 年 16:9 primary deck 作為主要版型與視覺層級依據。2018 年 4:3 secondary deck 只補充 academic storytelling、流程拆頁及 Summary & Future Work 組織方式，不得影響最終 16:9 尺寸。兩份 reference decks 只用於學習 layout、hierarchy、image scale、whitespace、comparison style、progressive disclosure 與 academic storytelling；不得重用其中的 ENIAC、IBM、Quantum Computing、quantum gate、quantum dot、MTJ、MRAM、spintronics、neuromorphic、量測圖、科學圖片、數據、公式、引用、圖片檔名或研究結論。"
   },
   "template_workflow": {
     "generate_cover_slide": false,
     "first_generated_slide": "Outline",
-    "final_assembly": "AI 只產生內容頁。若使用者提供 NanoSTLab 既有 PowerPoint 模板，應以該模板作為最終簡報外殼，複製既有內容頁版型並只替換標題、研究內容、使用者提供的圖表、公式與引用。封面不由 AI 生成。",
+    "final_assembly": "NanoSTLab 模板是固定 PowerPoint shell，不是供 AI 重新設計的視覺風格。AI 只產生內容頁，並只負責 title、scientific content、figures、tables、formulas、citations 與 speaker notes。若使用者提供 NanoSTLab 既有 PowerPoint 模板，應以該模板作為最終簡報外殼，複製既有內容頁版型並替換可編輯內容。封面不由 AI 生成，也不計入使用者指定頁數。",
     "locked_elements": [
-      "實驗室封面",
+      "既有實驗室封面（僅保留於固定 shell，不由 AI 生成）",
       "頂部標題區",
       "頂部藍黃分隔條",
       "底部實驗室識別區",
@@ -21,7 +94,7 @@
       "右下頁碼位置",
       "模板母片與版面配置"
     ],
-    "rule": "不得由 AI 重新設計、重畫或替換模板固定元素，也不得把內容頁做成另一套現代化模板。AI 只負責模板可編輯內容區。若實際模板檔不可用，僅輸出內容規格，不得自行仿製 Logo、頁尾或實驗室識別圖樣。"
+    "rule": "不得由 AI 重新設計、重畫或替換模板固定元素，也不得把內容頁做成另一套現代化模板。必須直接沿用 16:9 NanoSTLab PowerPoint 的實際 master/layout 與既有內容頁 shell；不可根據 reference deck 截圖或觀察值自行重建 master。AI 只負責模板可編輯內容區。若實際模板檔不可用，僅輸出內容規格，不得自行仿製 Logo、頁尾、頁碼或實驗室識別圖樣。"
   },
   "presentation_structure": {
     "required_sections": [
@@ -43,6 +116,7 @@
       "左側科學圖表、右側摘要",
       "左右並列比較",
       "三階段或時間軸式比較",
+      "全流程概覽後以連續頁逐步聚焦各階段",
       "流程或機制圖搭配短標籤",
       "主要圖片搭配兩張輔助圖片",
       "單一大型實驗圖搭配 2–4 個趨勢標註",
@@ -54,12 +128,13 @@
       "過長條列",
       "儀表板式版面",
       "卡片式企業簡報版面",
+      "過多 rounded boxes",
       "過度裝飾",
       "與研究內容無關的圖示",
       "為了填滿版面而加入的裝飾性圖片",
       "把參考簡報中的無關科學圖片當成模板素材"
     ],
-    "rule": "每頁選擇最適合科學內容的版面，不強制所有投影片使用相同配置。若來源中有圖表、元件圖、流程圖或實驗結果，應優先讓圖片成為主要視覺，而非轉寫成長文字。參考簡報的核心特色是大圖、短標籤、清楚的左到右資訊流與強調單一科學訊息。"
+    "rule": "每頁選擇最適合科學內容的版面，不強制所有投影片使用相同配置。若來源中有圖表、元件圖、流程圖或實驗結果，應優先讓圖片成為主要視覺，而非轉寫成長文字。2020 primary deck 的核心特色是 16:9 大圖、短標籤、清楚的左到右資訊流、兩欄科學比較、概覽後逐步拆頁，以及淡化未聚焦元件來實現 progressive disclosure。只學習構圖與敘事，不複製其特定研究圖像。"
   },
   "color_palette": {
     "primary_blue": "#376092",
@@ -74,19 +149,19 @@
   },
   "typography": {
     "font_family": [
-      "Arial",
       "Calibri",
+      "Arial",
       "Noto Sans TC"
     ],
-    "title_pt": 53,
-    "preferred_title_range_pt": "48–53",
+    "title_pt": 53.3,
+    "preferred_title_range_pt": "48–53.3",
     "long_title_pt": 40,
-    "body_pt": 24,
-    "section_heading_pt": "26–28",
-    "minimum_body_pt": 21,
+    "body_pt": "24–26.7",
+    "section_heading_pt": "26.7–32",
+    "minimum_body_pt": 21.3,
     "caption_pt": "16–20",
     "reference_pt": "10–11",
-    "rule": "標題優先單行、靠左、粗體。一般內文使用 24 pt 左右，重要數值或關鍵詞可放大至約 27–32 pt。若內容無法以最低字級清楚呈現，應拆分投影片，不得縮小文字硬塞。"
+    "rule": "Calibri 為 2020 primary deck 的主要字型；中文可使用 Noto Sans TC 或系統相容無襯線字型。標題優先單行、靠左、粗體，通常約 53.3 pt；長標題可縮至約 40–48 pt，但不得換成兩行塞入固定標題區。一般內文使用約 24–26.7 pt，重要數值或關鍵詞可放大至約 27–32 pt。若內容無法以 21.3 pt 以上清楚呈現，應拆分投影片，不得縮小文字硬塞。"
   },
   "slide_size": {
     "aspect_ratio": "16:9",
@@ -95,9 +170,9 @@
     "background_color": "#FFFFFF"
   },
   "template_geometry": {
-    "title_zone": "投影片頂部約 12% 高度，標題靠左並保持單行優先。內容不得進入固定標題區或覆蓋頂部藍黃分隔條。",
+    "title_zone": "沿用 16:9 master/layout 的固定頂部標題區；標題靠左並保持單行優先。內容不得進入標題區或覆蓋深藍長條與黃色短條。",
     "content_zone": "所有研究內容放在頂部藍黃分隔條下方與 citation/footer 上方的白色內容區。主要圖表可占可用寬度約 45%–70%，但不得遮住頁尾。",
-    "footer": "保留實驗室模板原有的黃藍底部識別、National Chiao Tung University / 學校識別、NanoSTLab 標誌與固定圖形，不得重畫、移動或遮蓋。",
+    "footer": "保留 16:9 master/layout 原有的黃色學校識別區、藍色 NanoSTLab 區、National Chiao Tung University / 學校識別、校徽與固定圖形，不得重畫、移動、縮放或遮蓋。",
     "page_number": "所有 AI 產生的內容頁都必須顯示頁碼，位置固定在右下頁尾區。因不生成封面，Outline 計為第 1 頁，之後依序為 2、3、4……。",
     "citation_zone": "引用放在頁尾正上方，使用約 10–11 pt 深灰文字；不可與底部實驗室識別或頁碼重疊。"
   },
@@ -106,14 +181,14 @@
     "visible_text": "優先使用短句、關鍵詞、數值重點、圖中標註與必要的比較文字",
     "paragraphs": false,
     "whitespace_ratio": "15%–30%",
-    "rule": "一張投影片只傳達一個主要訊息。一般頁面避免超過 5 個文字重點；每個重點盡量控制在約 3–12 個英文單字內。若來源圖已能表達資訊，不重複用文字完整敘述。"
+    "rule": "一張投影片只傳達一個主要訊息。文字應採短標籤、短句或少量重點，避免大量 bullet points；每個重點盡量控制在約 3–12 個英文單字或等量中文內。若來源圖已能表達資訊，不重複用文字完整敘述。內容放不下時拆頁，不得靠縮小字體硬塞。"
   },
   "image_layout": {
     "one_image": "使用單一主要圖片，通常約占可用寬度的 45%–70%",
     "two_images": "左右並排並維持一致高度、對齊與視覺權重",
     "three_images": "三欄、三階段流程或一主兩輔",
     "four_images": "僅在四張圖片重要性相近時使用 2×2 網格",
-    "rule": "新簡報只使用使用者提供的圖片，或使用者來源文件中明確屬於本次新研究內容的圖片。若有檔名，必須使用精確檔名。不得拉伸圖片，不得裁掉座標軸、圖例、單位、scale bar、figure label 或重要標示。不得因參考簡報中某圖片好看就直接挪用。"
+    "rule": "新簡報只使用使用者提供的圖片，或使用者來源文件中明確屬於本次新研究內容的圖片。若有檔名，必須使用精確檔名。不得拉伸圖片，不得裁掉座標軸、圖例、單位、scale bar、figure label 或重要標示。不得因參考簡報中某圖片好看就直接挪用；2018 deck 中的 MTJ、MRAM、spintronics、energy barrier、neuromorphic、measurement graph 與 application 圖均不是通用模板素材。"
   },
   "data_and_formula_presentation": {
     "data": "重要數值使用數值重點、精簡表格、左右比較、圖中標註或單一趨勢 callout 呈現。結果頁應讓實驗圖或數據圖成為主要視覺。",
@@ -124,7 +199,7 @@
     "position": "投影片底部、實驗室 footer 正上方",
     "font_size_pt": 10,
     "color": "#222222",
-    "rule": "每頁只列出與該頁直接相關且由使用者或本次來源文件提供的來源。不得把參考風格簡報中的 citation 自動帶到新主題。來源不足時標示『待補』。"
+    "rule": "每頁只列出與該頁直接相關且由使用者或本次來源文件提供的來源。不得把參考風格簡報中的 citation 自動帶到新主題。來源不足時標示『待使用者補充』或 null。"
   },
   "speaker_notes_style": {
     "length": "每頁約 2–5 句",
@@ -147,7 +222,7 @@
     ]
   },
   "reference_style_adaptation": {
-    "rule": "若使用者提供參考簡報或截圖，先分析其標題層級、固定頁首頁尾、配色、圖片比例、圖文對齊、留白、流程拆頁與實驗結果呈現方式，再將這些『版面與敘事規則』套用到新簡報。不得複製參考簡報中與新主題無關的科學內容、圖片、數據、公式或引用。",
+    "rule": "若使用者提供參考簡報或截圖，先分析其標題層級、固定頁首頁尾、配色、圖片比例、圖文對齊、留白、比較方式、流程拆頁與實驗結果呈現方式，再將這些『版面與敘事規則』套用到新簡報。不得複製參考簡報中與新主題無關的科學內容、圖片、數據、公式或引用；尤其不得把 reference presentation 裡的 ENIAC、IBM、Quantum Computing、MTJ、MRAM 等圖片挪用到其他主題。",
     "preserve": [
       "視覺層級",
       "大圖優先的學術排版",
