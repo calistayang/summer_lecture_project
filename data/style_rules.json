@@ -1,471 +1,191 @@
 {
-  "schema_version": "2.0",
-  "style_name": "NanoSTLab Academic Reference Style",
-  "source": "derived_from_user_provided_lab_reference_decks",
+  "schema_version": "1.0",
+  "source": "member_2_adapted_from_lab_reference_decks",
+  "style_name": "NanoSTLab 實驗室簡報模板",
   "reference_presentations": {
-    "primary": {
-      "filename": "ITRI-Meeting_Ming-Chun-Hong_20201119_Quantum-Computing_new(4).pptx",
-      "role": "Primary visual reference",
-      "native_aspect_ratio": "16:9",
-      "native_size_inch": [
-        13.333,
-        7.5
-      ],
-      "priority": "Use this deck for slide size, header/footer geometry, page-number location, typography scale, color identity, figure scale, and visual rhythm."
-    },
-    "secondary": {
-      "filename": "Group-Meeting_Ming-Chun-Hong_20181220(3).pptx",
-      "role": "Secondary academic storytelling reference",
-      "native_aspect_ratio": "4:3",
-      "native_size_inch": [
-        10.0,
-        7.5
-      ],
-      "priority": "Use this deck for research-story pacing, progressive disclosure, model/process explanation, result presentation, and Summary & Future Work structure. Do not convert new slides to 4:3."
-    },
-    "reference_asset_policy": {
-      "style_only": true,
-      "rule": "Images, scientific diagrams, data, citations, equations, and subject-matter content inside the reference decks are reference material for layout/style analysis only. Never reuse them in a new presentation unless the user explicitly provides the same asset as source content for the new topic.",
-      "prohibited": [
-        "copy ENIAC, IBM, quantum-computing, MTJ, MRAM, or other reference-deck scientific images into an unrelated presentation",
-        "copy reference-deck numerical data into an unrelated presentation",
-        "copy reference-deck citations into an unrelated presentation",
-        "use reference-deck screenshots as background decoration"
-      ]
-    }
+    "primary": "ITRI-Meeting_Ming-Chun-Hong_20201119_Quantum-Computing_new.pptx",
+    "secondary": "Group-Meeting_Ming-Chun-Hong_20181220.pptx",
+    "rule": "主要依照 2020 年 16:9 簡報的視覺系統；2018 年 4:3 簡報只用於參考學術內容節奏、流程拆頁、結果呈現與 Summary & Future Work 組織方式，不可把新簡報改成 4:3。參考簡報中的科學圖片、數據、公式、引用與研究內容只能作為風格分析依據，不得直接複製到其他主題的新簡報中。"
   },
-  "output_scope": {
+  "template_workflow": {
     "generate_cover_slide": false,
     "first_generated_slide": "Outline",
-    "cover_rule": "Do not create a title/cover slide.",
-    "page_count_rule": "The user-requested slide count means generated content slides only.",
-    "slide_numbering": {
-      "enabled": true,
-      "start_at": 1,
-      "slide_1": "Outline",
-      "sequence": "1, 2, 3, ...",
-      "rule": "Because no cover slide is generated, Outline must display page number 1."
-    }
-  },
-  "template_mode": {
-    "preferred_mode": "USE_EXISTING_LAB_TEMPLATE_AS_BASE",
-    "rule": "If the laboratory PowerPoint template/reference deck is available during final PPTX assembly, use its existing 16:9 content-slide layout as the base. Preserve the master/layout and replace only editable title/content/citation areas.",
+    "final_assembly": "AI 只產生內容頁。若使用者提供 NanoSTLab 既有 PowerPoint 模板，應以該模板作為最終簡報外殼，複製既有內容頁版型並只替換標題、研究內容、使用者提供的圖表、公式與引用。封面不由 AI 生成。",
     "locked_elements": [
-      "slide master",
-      "white background",
-      "top blue-yellow-blue separator",
-      "bottom yellow-blue laboratory footer",
-      "university logo and university name",
-      "NanoSTLab mark",
-      "page-number position",
-      "fixed decorative geometry"
+      "實驗室封面",
+      "頂部標題區",
+      "頂部藍黃分隔條",
+      "底部實驗室識別區",
+      "學校識別與 Logo",
+      "NanoSTLab 標誌",
+      "右下頁碼位置",
+      "模板母片與版面配置"
     ],
-    "editable_elements": [
-      "slide title",
-      "main scientific content",
-      "user-provided figures",
-      "user-provided tables",
-      "user-provided formulas",
-      "user-provided citations",
-      "speaker notes"
+    "rule": "不得由 AI 重新設計、重畫或替換模板固定元素，也不得把內容頁做成另一套現代化模板。AI 只負責模板可編輯內容區。若實際模板檔不可用，僅輸出內容規格，不得自行仿製 Logo、頁尾或實驗室識別圖樣。"
+  },
+  "presentation_structure": {
+    "required_sections": [
+      "Outline",
+      "研究背景",
+      "研究方法",
+      "研究結果",
+      "結論與未來工作"
     ],
-    "do_not": [
-      "redesign the laboratory shell",
-      "replace the laboratory shell with a generic modern theme",
-      "convert the deck into card-based or dashboard-style slides",
-      "move or resize branding elements",
-      "invent a new logo",
-      "treat reference scientific images as template assets"
+    "one_message_per_slide": true,
+    "progressive_disclosure": true,
+    "rule": "使用者指定的頁數是 AI 需要產生的內容頁數，不包含實驗室模板封面；Slide 1 必須是 Outline 且頁碼為 1。後續內容頁依序顯示 2、3、4……。複雜流程、模型、公式推導或多組實驗應拆成連續投影片逐步揭露。短篇簡報不強制重複 Outline；除非使用者要求或篇幅很長，否則只保留首頁 Outline。"
+  },
+  "visual_layout": {
+    "style": "學術圖像導向",
+    "preferred_patterns": [
+      "大圖搭配精簡標註",
+      "左側摘要、右側科學圖表",
+      "左側科學圖表、右側摘要",
+      "左右並列比較",
+      "三階段或時間軸式比較",
+      "流程或機制圖搭配短標籤",
+      "主要圖片搭配兩張輔助圖片",
+      "單一大型實驗圖搭配 2–4 個趨勢標註",
+      "公式或模型搭配一張物理解釋圖",
+      "Summary & Future Work 使用成果→意義→下一步的視覺流程"
     ],
-    "fallback_if_template_file_unavailable": {
-      "rule": "Reproduce only the measured fixed geometric identity described in this JSON. Do not invent missing logos or branding artwork; reserve their positions instead.",
-      "branding_asset_behavior": "Use only actual user-provided branding assets."
-    }
+    "avoid": [
+      "大段文字",
+      "過長條列",
+      "儀表板式版面",
+      "卡片式企業簡報版面",
+      "過度裝飾",
+      "與研究內容無關的圖示",
+      "為了填滿版面而加入的裝飾性圖片",
+      "把參考簡報中的無關科學圖片當成模板素材"
+    ],
+    "rule": "每頁選擇最適合科學內容的版面，不強制所有投影片使用相同配置。若來源中有圖表、元件圖、流程圖或實驗結果，應優先讓圖片成為主要視覺，而非轉寫成長文字。參考簡報的核心特色是大圖、短標籤、清楚的左到右資訊流與強調單一科學訊息。"
+  },
+  "color_palette": {
+    "primary_blue": "#376092",
+    "technical_emphasis_blue": "#0000FF",
+    "accent_yellow": "#F9CB07",
+    "main_text": "#000000",
+    "background": "#FFFFFF",
+    "warning_red": "#FF0000",
+    "supporting_light_blue": "#D3DCED",
+    "reference_gray": "#222222",
+    "rule": "黑色為主要內容文字。藍色用於重要數值、關鍵科學名詞、正向結果或比較中的主要分支；紅色僅用於警示、限制、反向趨勢或關鍵對比。黃色主要屬於模板識別，內容區內應少量使用。不得自行加入另一套裝飾性色盤。"
+  },
+  "typography": {
+    "font_family": [
+      "Arial",
+      "Calibri",
+      "Noto Sans TC"
+    ],
+    "title_pt": 53,
+    "preferred_title_range_pt": "48–53",
+    "long_title_pt": 40,
+    "body_pt": 24,
+    "section_heading_pt": "26–28",
+    "minimum_body_pt": 21,
+    "caption_pt": "16–20",
+    "reference_pt": "10–11",
+    "rule": "標題優先單行、靠左、粗體。一般內文使用 24 pt 左右，重要數值或關鍵詞可放大至約 27–32 pt。若內容無法以最低字級清楚呈現，應拆分投影片，不得縮小文字硬塞。"
   },
   "slide_size": {
     "aspect_ratio": "16:9",
     "width_inch": 13.333,
     "height_inch": 7.5,
-    "background_color": "#FFFFFF",
-    "rule": "Always use the 2020 reference deck's 16:9 canvas. The 2018 4:3 deck is not a canvas-size reference."
+    "background_color": "#FFFFFF"
   },
   "template_geometry": {
-    "title_zone": {
-      "x_in": 0.16,
-      "y_in": 0.0,
-      "w_in": 13.17,
-      "h_in": 0.915,
-      "safe_text_x_in": [
-        0.16,
-        12.9
-      ],
-      "rule": "Large left-aligned title at the top. Prefer one line."
-    },
-    "top_separator": {
-      "y_in": 0.915,
-      "h_in": 0.157,
-      "segments": [
-        {
-          "x_in": 0.0,
-          "w_in": 10.132,
-          "color": "#376092"
-        },
-        {
-          "x_in": 10.132,
-          "w_in": 0.105,
-          "color": "#FFFFFF"
-        },
-        {
-          "x_in": 10.237,
-          "w_in": 1.05,
-          "color": "#F9CB07"
-        },
-        {
-          "x_in": 11.287,
-          "w_in": 0.105,
-          "color": "#FFFFFF"
-        },
-        {
-          "x_in": 11.392,
-          "w_in": 1.941,
-          "color": "#376092"
-        }
-      ],
-      "rule": "Treat as fixed laboratory identity. Do not use this separator as a content graphic."
-    },
-    "main_content_zone": {
-      "x_in": 0.262,
-      "y_in": 1.151,
-      "w_in": 12.81,
-      "h_in": 4.86,
-      "bottom_safe_y_in": 6.01,
-      "rule": "Scientific content stays between the top separator and citation area."
-    },
-    "citation_zone": {
-      "x_in": 0.45,
-      "y_in": 6.02,
-      "w_in": 11.5,
-      "h_in": 0.42,
-      "rule": "Use only when the slide has a user-provided/source-supported citation. Keep clear of the footer and page number."
-    },
-    "footer": {
-      "y_in": 6.603,
-      "h_in": 0.897,
-      "left_identity_color": "#F9CB07",
-      "right_identity_color": "#376092",
-      "university_logo_region": {
-        "x_in": 0.0,
-        "y_in": 6.603,
-        "w_in": 1.718,
-        "h_in": 0.897
-      },
-      "university_name_region": {
-        "x_in": 1.263,
-        "y_in": 6.9,
-        "w_in": 6.86,
-        "h_in": 0.5
-      },
-      "lab_mark_region": {
-        "x_in": 9.377,
-        "y_in": 6.893,
-        "w_in": 3.5,
-        "h_in": 0.606
-      },
-      "rule": "Footer is fixed template identity and must never be covered by research content."
-    },
-    "page_number": {
-      "x_in": 12.422,
-      "y_in": 6.656,
-      "w_in": 0.626,
-      "h_in": 0.383,
-      "font_size_pt": 14,
-      "font_weight": "Bold",
-      "font_color": "#FFFFFF",
-      "alignment": "center",
-      "rule": "Show on every generated content slide. Outline is 1."
-    }
-  },
-  "color_palette": {
-    "background": "#FFFFFF",
-    "main_text": "#000000",
-    "template_blue": "#376092",
-    "template_yellow": "#F9CB07",
-    "technical_emphasis_blue": "#0000FF",
-    "warning_or_contrast_red": "#FF0000",
-    "reference_gray": "#222222",
-    "supporting_light_blue": "#D3DCED",
-    "rules": [
-      "Black is the default content color.",
-      "Blue is used for key numerical results, positive emphasis, important scientific terms, or the emphasized branch of a comparison.",
-      "Red is reserved for warnings, limitations, contradictory trends, or critical contrast.",
-      "Yellow primarily belongs to the laboratory template identity; use it sparingly inside content.",
-      "Do not introduce a new decorative color palette."
-    ]
-  },
-  "typography": {
-    "font_family_priority": [
-      "Arial",
-      "Calibri",
-      "Noto Sans TC"
-    ],
-    "title": {
-      "preferred_pt": 53,
-      "range_pt": [
-        48,
-        53.33
-      ],
-      "long_title_pt": [
-        40,
-        48
-      ],
-      "minimum_pt": 40,
-      "weight": "Bold",
-      "color": "#000000",
-      "alignment": "left",
-      "rule": "Prefer a single-line title. Shorten the title before reducing below 40 pt."
-    },
-    "body": {
-      "primary_pt": [
-        24,
-        26.67
-      ],
-      "minimum_pt": 21,
-      "color": "#000000",
-      "rule": "Use phrases and labels rather than paragraphs."
-    },
-    "section_label": {
-      "pt": [
-        26.67,
-        28
-      ],
-      "weight": "Bold"
-    },
-    "figure_label": {
-      "pt": [
-        18.67,
-        24
-      ],
-      "weight": "Bold when it functions as a category or comparison label"
-    },
-    "caption": {
-      "pt": [
-        16,
-        20
-      ],
-      "color": "#000000"
-    },
-    "citation": {
-      "font": "Arial",
-      "pt": [
-        10,
-        10.7
-      ],
-      "color": "#222222",
-      "weight": "Regular",
-      "position": "above footer"
-    },
-    "numeric_emphasis": {
-      "pt": [
-        26.67,
-        32
-      ],
-      "weight": "Bold",
-      "preferred_color": "#0000FF"
-    },
-    "hierarchy_rule": "If the content does not fit at these sizes, split the slide. Never shrink text to force dense content."
-  },
-  "presentation_structure": {
-    "required_sections": [
-      "Outline",
-      "Research Background",
-      "Method / Mechanism / Experimental Setup",
-      "Results / Analysis",
-      "Summary & Future Work"
-    ],
-    "first_slide": "Outline",
-    "last_core_section": "Summary & Future Work",
-    "one_primary_message_per_slide": true,
-    "progressive_disclosure": true,
-    "section_outline_repetition": {
-      "default": false,
-      "rule": "The reference decks sometimes repeat Outline slides as section markers, but new short presentations should not spend extra slides on repeated Outline pages unless the user explicitly requests them or the deck is long enough to benefit."
-    },
-    "rule": "Build a clear research narrative rather than a sequence of text summaries."
-  },
-  "reference_derived_visual_language": {
-    "core_characteristics": [
-      "large scientific figures",
-      "short labels positioned near figures",
-      "strong left-to-right visual flow",
-      "comparisons using aligned columns",
-      "processes shown with arrows and repeated stages",
-      "key numbers emphasized in blue",
-      "references kept at the bottom",
-      "substantial white background",
-      "little decorative chrome inside the content area"
-    ],
-    "representative_patterns": {
-      "timeline": "Three or more stages arranged left-to-right with images, stage labels, dates/parameters, and one dominant arrow.",
-      "image_text": "One large figure occupies roughly half to two-thirds of the content area; the remaining space contains only the few labels or callouts necessary to explain it.",
-      "comparison": "Two or three aligned visual columns with matched image sizes and concise labels.",
-      "mechanism": "Scientific diagram centered or dominant, with short labels and arrows that explain direction or causality.",
-      "process_flow": "A repeated flow structure is carried across consecutive slides, revealing one new stage at a time.",
-      "experimental_result": "Graph or measurement figure is dominant; 2-4 concise callouts identify trend, parameter, or conclusion.",
-      "application_map": "One central concept connected spatially to a small number of application branches with representative figures.",
-      "summary_future": "Connect achieved result -> extracted insight -> next application/future work using a visual flow, not a paragraph list."
-    }
-  },
-  "layout_selection": {
-    "allowed_layouts": [
-      "outline_visual_roadmap",
-      "timeline",
-      "single_large_figure",
-      "left_summary_right_figure",
-      "left_figure_right_summary",
-      "two_column_comparison",
-      "three_stage_comparison",
-      "one_main_two_supporting_figures",
-      "mechanism_diagram",
-      "process_flow",
-      "progressive_process",
-      "experimental_result",
-      "parameter_comparison",
-      "compact_table_plus_figure",
-      "summary_future_flow"
-    ],
-    "selection_rules": {
-      "background_or_motivation": "Prefer one large concept image/diagram plus 2-4 concise labels.",
-      "method": "Prefer process-flow, architecture, device schematic, or staged experimental sequence.",
-      "comparison": "Use aligned side-by-side columns with equal visual weight.",
-      "result": "Make the source figure the main object; add only trend/parameter callouts supported by the source.",
-      "multiple_results": "Split across consecutive slides instead of making one dashboard.",
-      "formula_or_model": "Show the formula/model independently with variable labels and one adjacent physical interpretation figure when available.",
-      "future_work": "Use one direction per branch or one future direction per slide if explanation is substantial."
-    }
+    "title_zone": "投影片頂部約 12% 高度，標題靠左並保持單行優先。內容不得進入固定標題區或覆蓋頂部藍黃分隔條。",
+    "content_zone": "所有研究內容放在頂部藍黃分隔條下方與 citation/footer 上方的白色內容區。主要圖表可占可用寬度約 45%–70%，但不得遮住頁尾。",
+    "footer": "保留實驗室模板原有的黃藍底部識別、National Chiao Tung University / 學校識別、NanoSTLab 標誌與固定圖形，不得重畫、移動或遮蓋。",
+    "page_number": "所有 AI 產生的內容頁都必須顯示頁碼，位置固定在右下頁尾區。因不生成封面，Outline 計為第 1 頁，之後依序為 2、3、4……。",
+    "citation_zone": "引用放在頁尾正上方，使用約 10–11 pt 深灰文字；不可與底部實驗室識別或頁碼重疊。"
   },
   "content_density": {
-    "overall": "concise_academic",
+    "title": "簡短且具體，優先 2–8 個英文單字或等量中文短語",
+    "visible_text": "優先使用短句、關鍵詞、數值重點、圖中標註與必要的比較文字",
     "paragraphs": false,
-    "one_message_per_slide": true,
-    "preferred_visible_text": "short phrases, labels, equations, parameters, and figure annotations",
-    "max_bullets_per_slide": 5,
-    "max_words_per_bullet": 12,
-    "preferred_key_phrases": "3-8 words",
-    "whitespace_target": "15%-30%",
-    "rule": "Do not convert scientific content into a long prose summary. Visual evidence should carry the slide whenever source figures exist."
+    "whitespace_ratio": "15%–30%",
+    "rule": "一張投影片只傳達一個主要訊息。一般頁面避免超過 5 個文字重點；每個重點盡量控制在約 3–12 個英文單字內。若來源圖已能表達資訊，不重複用文字完整敘述。"
   },
-  "image_rules": {
-    "source_policy": "Use only images supplied by the user or explicitly contained in the user's source documents for the new presentation.",
-    "filename_policy": "When source image filenames are available, preserve the exact filenames in the generated slide specification.",
-    "one_image": "Usually 45%-70% of usable content width.",
-    "two_images": "Align side-by-side with matched height unless their scientific aspect ratios require otherwise.",
-    "three_images": "Use three columns or one-main-two-supporting structure.",
-    "four_images": "Use 2x2 only when all four figures are equally important.",
-    "preserve": [
-      "aspect ratio",
-      "axes",
-      "legends",
-      "units",
-      "scale bars",
-      "figure labels",
-      "scientifically important annotations"
-    ],
-    "avoid": [
-      "stretching",
-      "decorative image crops that remove scientific context",
-      "covering axes or legends",
-      "using unrelated stock icons",
-      "reusing images from the reference decks solely because they look good"
-    ],
-    "shadow": "Subtle figure shadow is allowed only when it matches the reference slide and does not reduce scientific clarity."
+  "image_layout": {
+    "one_image": "使用單一主要圖片，通常約占可用寬度的 45%–70%",
+    "two_images": "左右並排並維持一致高度、對齊與視覺權重",
+    "three_images": "三欄、三階段流程或一主兩輔",
+    "four_images": "僅在四張圖片重要性相近時使用 2×2 網格",
+    "rule": "新簡報只使用使用者提供的圖片，或使用者來源文件中明確屬於本次新研究內容的圖片。若有檔名，必須使用精確檔名。不得拉伸圖片，不得裁掉座標軸、圖例、單位、scale bar、figure label 或重要標示。不得因參考簡報中某圖片好看就直接挪用。"
   },
-  "data_formula_and_citation": {
-    "data": {
-      "rule": "Use only numbers explicitly provided by the user or source documents.",
-      "presentation": [
-        "large numerical callout",
-        "compact comparison",
-        "figure annotation",
-        "small table"
-      ]
-    },
-    "formula": {
-      "rule": "Preserve symbols, subscripts, superscripts, units, and variable names exactly. Do not invent missing equations."
-    },
-    "citation": {
-      "rule": "Cite only sources explicitly provided by the user/source documents. Keep citations directly relevant to the current slide.",
-      "missing_source_behavior": "待補",
-      "position": "citation zone above footer",
-      "font": "Arial 10-10.7 pt #222222"
-    }
+  "data_and_formula_presentation": {
+    "data": "重要數值使用數值重點、精簡表格、左右比較、圖中標註或單一趨勢 callout 呈現。結果頁應讓實驗圖或數據圖成為主要視覺。",
+    "formula": "公式應獨立呈現並保留符號、上下標、單位與變數名稱。若有來源支援，可在旁邊搭配一張物理意義或流程圖，但不得自行新增不存在的公式。",
+    "rule": "只能使用使用者或來源文件明確提供的數據與公式，不得自行補數值、推導結果或實驗條件。"
   },
-  "outline_slide": {
-    "title": "Outline",
-    "page_number": 1,
-    "goal": "Show the research story at a glance.",
-    "text_density": "very low",
-    "preferred_layouts": [
-      "three- or four-stage roadmap",
-      "left-to-right progression with arrows",
-      "major-section labels with a representative source figure preview if available"
-    ],
-    "avoid": [
-      "paragraph descriptions",
-      "detailed sub-bullets",
-      "generic corporate agenda cards",
-      "more than one sentence per section"
-    ]
+  "citation_style": {
+    "position": "投影片底部、實驗室 footer 正上方",
+    "font_size_pt": 10,
+    "color": "#222222",
+    "rule": "每頁只列出與該頁直接相關且由使用者或本次來源文件提供的來源。不得把參考風格簡報中的 citation 自動帶到新主題。來源不足時標示『待補』。"
   },
-  "speaker_notes": {
-    "default_length": "2-5 sentences per slide",
-    "purpose": [
-      "state the main scientific message",
-      "explain what the audience should observe in the figure",
-      "connect the visual evidence to the conclusion",
-      "provide a short transition when useful"
-    ],
-    "accuracy_rule": "Speaker notes must obey the same no-hallucination rule as visible slide content."
+  "speaker_notes_style": {
+    "length": "每頁約 2–5 句",
+    "purpose": "說明該頁主要科學訊息、提醒觀眾應觀察的圖中重點、解釋圖片或數據與結論的關係，必要時提供一個簡短轉場。",
+    "rule": "講者備註不得加入來源資料中不存在的數據、結果、機制或主張。"
   },
   "content_accuracy": {
     "use_only_user_sources": true,
-    "missing_content_behavior": "待使用者補充",
+    "missing_content_behavior": "標示『待使用者補充』或 null",
     "prohibited": [
-      "invent numerical results",
-      "invent experimental conditions",
-      "invent equations",
-      "invent citations",
-      "invent image filenames",
-      "invent scientific conclusions",
-      "copy unrelated content from the reference decks"
+      "捏造數值",
+      "捏造實驗結果",
+      "捏造實驗條件",
+      "捏造公式",
+      "捏造引用",
+      "捏造圖片檔名",
+      "捏造研究結論",
+      "複製與新主題無關的參考簡報科學內容",
+      "把參考簡報中的圖片當成通用模板素材"
+    ]
+  },
+  "reference_style_adaptation": {
+    "rule": "若使用者提供參考簡報或截圖，先分析其標題層級、固定頁首頁尾、配色、圖片比例、圖文對齊、留白、流程拆頁與實驗結果呈現方式，再將這些『版面與敘事規則』套用到新簡報。不得複製參考簡報中與新主題無關的科學內容、圖片、數據、公式或引用。",
+    "preserve": [
+      "視覺層級",
+      "大圖優先的學術排版",
+      "標題處理",
+      "配色邏輯",
+      "圖片呈現方式",
+      "左右比較方式",
+      "流程與機制圖的資訊流",
+      "漸進式揭露節奏",
+      "頁碼位置",
+      "citation 位置"
+    ],
+    "do_not_copy": [
+      "無關的科學內容",
+      "無關的數據",
+      "無關的公式",
+      "無關的圖片",
+      "無關的引用",
+      "參考簡報的研究結論"
     ]
   },
   "quality_control": {
     "checks": [
-      "No cover slide is generated.",
-      "Slide 1 is Outline and displays page number 1.",
-      "All subsequent content slides have sequential page numbers.",
-      "Slide size is 16:9 at 13.333 x 7.5 inches.",
-      "Top separator and bottom NanoSTLab footer are preserved and unobstructed.",
-      "Reference-deck scientific images are not reused unless explicitly supplied as new-topic source assets.",
-      "Every slide communicates one main message.",
-      "Figures dominate over prose whenever source figures exist.",
-      "No body text is smaller than 21 pt unless it is a caption or citation.",
-      "Citations remain approximately 10 pt and above the footer.",
-      "No image is stretched and no axes, legends, units, or scale bars are hidden.",
-      "No unsupported data, formulas, citations, or conclusions are introduced.",
-      "There are no UI cards, dashboard layouts, excessive rounded boxes, or unrelated icons.",
-      "The deck visually resembles NanoSTLab academic presentations through hierarchy, figure use, flow, color emphasis, and spacing—not by copying unrelated scientific content."
-    ],
-    "failure_action": "If a slide fails any check, revise the layout or split the content. Do not solve the problem by shrinking text or removing scientific context."
-  },
-  "prompt_generation_priority": [
-    "1. Scientific accuracy and source fidelity",
-    "2. No-cover structure with Outline as Slide 1",
-    "3. Correct page numbering from 1",
-    "4. Preserve NanoSTLab fixed template identity",
-    "5. One main scientific message per slide",
-    "6. Reference-derived image-oriented academic layout",
-    "7. Readable typography and whitespace",
-    "8. Only then optimize aesthetics"
-  ]
+      "不生成封面頁",
+      "Slide 1 必須是 Outline 且頁碼為 1",
+      "後續每張內容頁都有連續頁碼",
+      "投影片數量符合使用者需求",
+      "投影片尺寸固定為 16:9",
+      "每頁只有一個主要訊息",
+      "所有圖片檔名與圖片來源符合使用者輸入或本次來源文件",
+      "沒有把參考簡報無關科學圖片挪用到新主題",
+      "沒有捏造數據、公式、引用、實驗條件或研究結論",
+      "文字與圖片不重疊",
+      "內容不遮住頂部藍黃分隔條與底部 NanoSTLab footer",
+      "字級與留白保持可讀",
+      "重要圖表優先於長文字",
+      "研究背景、方法、結果、結論與未來工作均有涵蓋",
+      "沒有 dashboard、卡片式企業簡報、過度圓角框或無關裝飾"
+    ]
+  }
 }
