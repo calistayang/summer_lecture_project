@@ -11,7 +11,7 @@ def generate_final_prompt(user_inputs: dict, style_rules: dict, analysis: dict) 
         "# 學術簡報製作指令",
         f"主題：{req['topic']}",
         f"對象：{req['audience']}｜時間：{req['duration_minutes']} 分鐘｜內容頁數：{pages}（不含模板封面）｜語言：{req['language']}",
-        "本任務只產生內容頁，不重新設計封面。Slide 1 必須是 Outline。",
+        "本任務只產生內容頁，不重新設計封面。Slide 1 必須得是 Outline。",
         "完成內容頁後，將投影片複製或套用至使用者提供的實驗室 PowerPoint 模板；保留母片、頁首頁尾、Logo 與頁碼位置。",
         "不得捏造數據或引用；資料不足時標示「待使用者補充」。",
         "",
