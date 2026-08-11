@@ -3,9 +3,93 @@
   "source": "NanoSTLab reference decks and validated 16:9 laboratory template",
   "style_name": "NanoSTLab 實驗室學術簡報風格",
   "reference_presentations": {
-    "primary_template": "ITRI-Meeting_Ming-Chun-Hong_20201119_Quantum-Computing_new.pptx",
+    "primary_template": "data/templates/NanoSTLab_16x9_template.pptx",
+    "primary_template_original_filename": "模板.pptx",
+    "template_distribution": "模板已隨 project 放在 data/templates/NanoSTLab_16x9_template.pptx。生成系統必須把此檔案作為實際 PPTX 輸入交給 AI，不得只傳送 style_rules.json。",
     "secondary_style_reference": "Group-Meeting_Ming-Chun-Hong_20181220.pptx",
-    "template_usage": "primary_template 是固定的 16:9 PowerPoint shell，必須以原檔或其合法複本作為 starter deck，不得只靠視覺模仿重畫模板。",
+    "excellent_presentation_reference": "ITRI-Meeting_Ming-Chun-Hong_20201119_Quantum-Computing_new.pptx",
+    "template_usage": "primary_template 是一頁式固定 16:9 PowerPoint shell；必須複製整張模板頁作為每張輸出頁的基底，不得只靠視覺模仿重畫模板。",
+    "analyzed_template": {
+      "slide_count": 1,
+      "aspect_ratio": "16:9",
+      "size_points": "960 x 540",
+      "editable_seed_slide": 1,
+      "initial_title_text": "Title",
+      "initial_page_number_text": "0",
+      "fixed_visual_shell": [
+        "白色背景",
+        "左上大型黑色標題區",
+        "標題下方藍色長條與黃色短條",
+        "左下校徽",
+        "黃色 National Chiao Tung University footer",
+        "右下藍色 NanoSTLab footer",
+        "右下角頁碼"
+      ],
+      "insertion_contract": "複製模板第 1 張整頁，改寫 Title 與頁碼 0；新增內容只放在上方分隔條與下方 footer 之間。模板固定圖形即使是 slide-local object 也必須保留。"
+    },
+    "excellent_deck_analysis": {
+      "slide_count": 117,
+      "aspect_ratio": "16:9",
+      "size_points": "960 x 540",
+      "dominant_fonts": [
+        "Calibri",
+        "Cambria Math",
+        "Arial"
+      ],
+      "observed_font_sizes_pt": [
+        53.3,
+        48,
+        44,
+        32,
+        28,
+        26.7,
+        24,
+        21.3,
+        18.7,
+        16,
+        14,
+        10.7
+      ],
+      "dominant_colors": [
+        "black",
+        "template blue #376092",
+        "technical blue #0000FF",
+        "warning red #FF0000",
+        "white",
+        "light gray"
+      ],
+      "observed_narrative_patterns": [
+        "以歷史時間線建立背景，再提出研究動機與真實問題",
+        "先用 classical-versus-quantum comparison 建立差異，再逐步導入元件、機制與演算法",
+        "同一主題連續使用多張投影片，每頁只增加一層圖、公式、步驟或結論",
+        "方法先呈現總覽，再分解單一元件、操作、流程與公式",
+        "複雜演算法以 goal、步驟、電路、公式、範例與應用分頁說明",
+        "硬體章節由架構總覽進入元件、製程、控制、量測與挑戰",
+        "重要段落後使用 short summary，最後以 summary、connection question 或 future challenges 收束",
+        "大量使用重複底圖與逐頁增量，形成 progressive disclosure"
+      ],
+      "observed_layout_archetypes": [
+        "large figure with short explanatory labels",
+        "left explanation / right scientific figure",
+        "left scientific figure / right explanation",
+        "side-by-side before-after or classical-quantum comparison",
+        "horizontal timeline with milestone images",
+        "process or algorithm flow",
+        "circuit or mechanism diagram with concise labels",
+        "equation plus annotated conceptual figure",
+        "experimental or technical graph plus focused callout",
+        "three-part comparison only when all panels answer the same question",
+        "summary page with a few large visual conclusions"
+      ],
+      "observed_density": {
+        "typical_body_pt": "21.3-26.7",
+        "typical_caption_pt": "14-18.7",
+        "typical_reference_pt": "10.7",
+        "preferred_content": "figures, circuits, equations and short labels",
+        "avoid_copying_dense_examples": "少數公式密集或文字超過約 450 字元的頁面只代表附錄或深度推導，不應成為一般內容頁的密度標準。"
+      },
+      "adaptation_rule": "學習其學術敘事、留白、圖像尺度、比較關係與 progressive disclosure；不複製量子運算的文字、圖片、公式、數據、citation 或結論。"
+    },
     "learn_only": [
       "layout",
       "visual hierarchy",
@@ -35,6 +119,27 @@
     "content_page_count_excludes_cover": true,
     "page_numbering": "Outline 顯示頁碼 1，後續內容頁依序顯示 2、3、4……，直到使用者指定的內容頁數。",
     "starter_deck_requirement": "載入 primary_template，直接沿用其 PowerPoint master、layout、theme 與固定 shell；不得建立一份外觀近似但沒有原母片關係的新簡報。",
+    "required_input_files": [
+      "本次生成的 final_prompt.txt",
+      "使用者的研究文字、文件與圖片",
+      "data/templates/NanoSTLab_16x9_template.pptx（project 內建模板，必須作為可編輯 PPTX 一起提供給 AI）"
+    ],
+    "assembly_mode": "EDIT_EXISTING_PPTX_ONLY",
+    "ai_capability_assumption": "假設 AI 能完整讀取、編輯、複製及匯出既有 PPTX，並能保留原始 slide master、custom layouts、theme、placeholder、speaker notes 與投影片關係。AI 必須直接執行以下組裝流程，不得改成只提供設計建議或近似模板。",
+    "assembly_algorithm": [
+      "1. 從 project 讀取 data/templates/NanoSTLab_16x9_template.pptx，將它作為本次生成工作的實際可編輯 PPTX；不得只傳送 JSON、只閱讀截圖或根據文字描述重畫。",
+      "2. 以 primary_template 的合法複本作為輸出檔起點，保留原始 slide master、custom layouts、theme、頁面尺寸及所有 master-level 固定物件。",
+      "3. 複製 primary_template 的第 1 張且唯一一張 16:9 NanoSTLab 模板頁，作為每張新內容頁的基底；必須複製整張 slide，不得建立空白 slide，也不得從 excellent_presentation_reference 複製任何主題內容頁。",
+      "4. 依使用者指定的內容頁數複製該內容頁基底；不複製、不生成封面。輸出第一張內容頁就是 Outline。",
+      "5. 每張模板複本保留完整固定 shell。將原始 Title 改成本頁標題，將原始頁碼 0 改成正確頁碼；不得刪除或重建頂部藍黃分隔條、footer、校徽、學校識別、Logo、NanoSTLab、頁碼位置、背景或既有 PPTX 關係。",
+      "6. 在既有 title placeholder 中改寫本頁標題；所有新增科學內容只能放入標題分隔條下方、footer 上方的安全內容區。",
+      "7. 使用模板原有右下頁碼物件，Outline 設為 1，後續依序設為 2、3、4……；不得另外在其他位置新增頁碼。",
+      "8. 加入使用者提供的文字、圖片、表格、公式、citation 與 speaker notes；圖片必須保持比例且不得裁掉科學資訊。",
+      "9. 完成後匯出為仍含有原始 NanoSTLab slide master、custom layouts 與 theme 的 .pptx，不得扁平化成圖片式簡報，也不得輸出一份沒有原模板母片關係的新檔。",
+      "10. 重新開啟輸出的 .pptx，逐頁檢查固定 shell、16:9、頁碼、文字大小、圖片比例、重疊、溢位、遺留 reference-deck 內容及來源正確性。"
+    ],
+    "failure_protection": "本規格預設 AI 支援完整 PPTX 編輯。若實際匯出後無法保留 master/layout/theme 或無法由 PowerPoint 開啟，該輸出即判定失敗，必須修正後重新匯出；禁止交付自行重畫、近似配色、截圖背景或一般 AI 主題代替的版本。",
+    "template_identity_test": "輸出檔必須能在 Microsoft PowerPoint 正常開啟並維持 16:9；每頁必須保有模板第 1 頁的完整固定 shell、原生物件與既有 layout/theme 關係。只有視覺相似、截圖背景或重新繪製不算通過。",
     "final_assembly": "所有內容頁必須建立在 NanoSTLab 16:9 模板的原始 master/layout 上。AI 只替換或新增內容區物件。",
     "locked_elements": [
       "頂部標題區",
@@ -132,8 +237,11 @@
     "rule": "最終檔必須保持模板原生 16:9 尺寸，不得轉成 4:3。"
   },
   "template_geometry": {
+    "coordinate_system_points": "960 x 540",
+    "title_placeholder": "模板 slide 1 的 Title 2；left 11.4、top 0、width 960、height 65.9 pt。只可修改文字，不得移動或改變尺寸。",
+    "page_number_placeholder": "模板 slide 1 的 Slide Number Placeholder 3；left 905.1、top 479.2、width 45.1、height 27.6 pt。將初始值 0 改為連續頁碼。",
     "title_zone": "沿用模板原始頂部標題 placeholder 與藍黃分隔條；只可修改標題文字。",
-    "content_zone": "所有 AI 生成的內容只能放在標題分隔條下方、footer 上方的安全內容區。",
+    "content_zone": "所有 AI 生成內容只能放在約 left 45-915、top 82-465 pt 的安全內容區；不得進入標題、分隔條、citation、頁碼或 footer。",
     "footer": "完整沿用模板中的校徽、學校識別、NanoSTLab 與藍黃 footer，不得重畫或遮蓋。",
     "page_number": "使用模板原有右下頁碼位置；Outline 為 1，後續逐頁加一。",
     "citation_zone": "引用放在內容區底部、footer 上方，約 10-11 pt，不得與頁碼或 footer 重疊。"
@@ -231,6 +339,10 @@
       "頁碼從 1 開始連續遞增",
       "最終尺寸為 16:9",
       "每頁沿用原 NanoSTLab master/layout 與固定 shell",
+      "輸出檔是由 primary_template 的複本組裝，而不是從空白簡報建立",
+      "每張內容頁由模板既有內容頁整張複製，沒有以近似圖形重畫 shell",
+      "PowerPoint 的投影片母片與版面配置中仍可辨識原 NanoSTLab master/layout/theme",
+      "輸出 PPTX 能由 Microsoft PowerPoint 正常重新開啟",
       "固定標題區、藍黃分隔條、footer、校徽、Logo、NanoSTLab 與頁碼未被改動或遮蓋",
       "每頁只有一個主要訊息",
       "整體為 academic、figure-driven layout",
