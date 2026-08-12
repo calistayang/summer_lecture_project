@@ -34,7 +34,7 @@ DATA_RE = re.compile(
 
 
 def generate_final_prompt(user_inputs: dict, style_rules: dict, analysis: dict) -> str:
-    """保留原函式介面，產生指定頁數的內容頁製作規格。"""
+    """保留原函式介面，產生直接套用既有模板的簡報製作規格。"""
 
     requirements = user_inputs["requirements"]
     pages = requirements["pages"]
@@ -52,13 +52,14 @@ def generate_final_prompt(user_inputs: dict, style_rules: dict, analysis: dict) 
     unused_images = _assign_images(slides, analysis.get("images", []))
 
     lines = [
-        "# NanoSTLab 學術簡報內容頁製作 Prompt",
+        "# NanoSTLab 學術簡報製作 Prompt",
         "",
         "## 一、工作流程與最高優先規則",
-        "1. 本系統只產生 final_prompt.txt 作為簡報製作規格，不直接產生最終 .pptx。",
-        "2. 必須保留 NanoSTLab 模板母片、Logo、頂部標題區、底部實驗室識別與右下頁碼，不得重新設計、重畫、遮蓋或位移。",
-        "3. 接收此 Prompt 的 AI 先依逐頁規格製作內容頁；完成後，再將內容頁複製或套用至使用者提供的既有 NanoSTLab PowerPoint 模板。",
-        "4. 不產生封面；模板封面由使用者填寫。第一張生成的內容頁必須是 Outline，並從第 1 頁開始編號。",
+        "1. 本網站只產生 final_prompt.txt；接收此 Prompt 的簡報 AI 必須直接交付可編輯的最終 .pptx，不可只回傳大綱、文字或程式碼。",
+        "2. 開始製作前，確認已同時取得 final_prompt.txt、原始研究文件、Prompt 指定的研究圖片，以及 NanoSTLab PowerPoint 模板；缺少的素材標示「待補」，不得自行搜尋或捏造。",
+        "3. 直接在使用者提供的 NanoSTLab PowerPoint 模板內建立簡報，不可先製作另一套獨立簡報再複製，也不可建立新的母片、主題或視覺系統。",
+        "4. 必須保留模板母片、Logo、頂部標題區、底部實驗室識別與右下頁碼，不得重新設計、重畫、遮蓋、位移或替換。",
+        "5. 封面完全不在本次製作範圍內：不得生成、重製、修改或填寫封面，也不得變更封面中的任何文字、圖片、位置或格式；模板原有封面必須保持原樣。第一張由 AI 製作的投影片必須是封面之後的 Outline，並作為內容第 1 頁。",
         "",
         "## 二、簡報需求與內容限制",
         f"- 主題：{topic}",
