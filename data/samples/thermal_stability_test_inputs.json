@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "requirements": {
+    "topic": "藉由超高溫快速熱退火提升氧化銦電晶體的熱穩定性",
+    "audience": "實驗室教授與成員",
+    "duration_minutes": 15,
+    "pages": 12,
+    "language": "繁體中文",
+    "style": "NanoSTLab 實驗室優良簡報風格"
+  },
+  "text_content": {
+    "background": "超薄 In2O3 n 型場效電晶體具有高電子遷移率，但在升溫操作時容易因缺陷與載子濃度增加產生明顯負向臨界電壓漂移。研究目標是利用 800 °C 超高溫快速熱氧化退火提升薄膜結晶性，降低本徵缺陷以及金屬沉積與熱處理造成的缺陷，以改善元件熱穩定性。",
+    "methods": "在 p++ Si/30 nm SiO2 基板上以 225 °C ALD 沉積 2.5 nm In2O3，形成 30 nm Ni 源極與汲極；比較 as-deposited 與在氧氣中 800 °C、1 min 快速熱氧化退火的元件。以 TEM、AFM、XPS、UV-vis DRS、FTIR、ESR 與電性量測分析結晶性、表面粗糙度、能帶、缺陷及 27–127 °C 的溫度穩定性；另以 300 °C、1 min 的 95% N2/5% H2 forming gas 評估氫相關劣化。",
+    "results": "Figure 1：以元件剖面圖建立閱讀起點，再以箭頭依序連到光學影像、TEM 與 AFM；RTO 800 °C 使 In2O3 結晶性提升，表面 RMS roughness 由 0.34 nm 降至 0.152 nm，應以虛線框強調 TEM/AFM 的關鍵差異。\nFigure 2：左右比較 as-deposited 與 RTO 元件的 ID–VGS，再串接 XPS valence-band、Kubelka–Munk plot 與 band diagram，說明能帶與電性差異；保留所有座標軸、單位與圖例。\nFigure 3：27–127 °C 量測中，as-deposited 元件的 forward/reverse Vth 分別負向漂移約 2.4/5.1 V，而 RTO 元件僅約 0.05/0.15 V；以溫度箭頭串接 transfer curves 與 Vth–temperature 圖，虛線框只標出穩定曲線。\nFigure 4：將 forming-gas annealing 前後圖排成左右 before/after 比較；RTO 元件的電性與 XPS 變化較小，說明高結晶性提升對氫相關缺陷的抵抗能力。\nFigure 5：依 channel length 由長到短排列 transfer curves，箭頭指向 Vth–L 關係圖；RTO 元件抑制短通道造成的 Vth 變化，支持金屬與熱誘發缺陷減少的機制。",
+    "conclusion": "800 °C 快速熱氧化退火可透過提升 In2O3 結晶性與降低缺陷，同時改善高溫操作、forming gas 與通道長度變化下的穩定性。簡報結尾應以一張機制總結圖串起『高結晶性 → 較少缺陷 → 較小 Vth 漂移』，並引用 ACS Applied Materials & Interfaces 2025, 17, 5078–5085；DOI: 10.1021/acsami.4c18435。"
+  },
+  "images": []
+}
