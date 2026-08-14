@@ -114,53 +114,20 @@
     "rule": "reference decks 只提供版面與敘事參考；不得把其中的科學內容、圖片、數據、公式或引用移植到其他研究主題。"
   },
   "template_workflow": {
-    "generate_cover_slide": false,
+    "generate_cover_slide": "保留並使用模板既有封面，不另外建立封面",
     "first_generated_slide": "Outline",
-    "content_page_count_excludes_cover": true,
-    "page_numbering": "Outline 顯示頁碼 1，後續內容頁依序顯示 2、3、4……，直到使用者指定的內容頁數。",
-    "starter_deck_requirement": "載入 primary_template，直接沿用其 PowerPoint master、layout、theme 與固定 shell；不得建立一份外觀近似但沒有原母片關係的新簡報。",
-    "required_input_files": [
-      "本次生成的 final_prompt.txt",
-      "使用者的研究文字、文件與圖片",
-      "data/templates/NanoSTLab_16x9_template.pptx（project 內建模板，必須作為可編輯 PPTX 一起提供給 AI）"
-    ],
-    "assembly_mode": "EDIT_EXISTING_PPTX_ONLY",
-    "ai_capability_assumption": "假設 AI 能完整讀取、編輯、複製及匯出既有 PPTX，並能保留原始 slide master、custom layouts、theme、placeholder、speaker notes 與投影片關係。AI 必須直接執行以下組裝流程，不得改成只提供設計建議或近似模板。",
-    "assembly_algorithm": [
-      "1. 從 project 讀取 data/templates/NanoSTLab_16x9_template.pptx，將它作為本次生成工作的實際可編輯 PPTX；不得只傳送 JSON、只閱讀截圖或根據文字描述重畫。",
-      "2. 以 primary_template 的合法複本作為輸出檔起點，保留原始 slide master、custom layouts、theme、頁面尺寸及所有 master-level 固定物件。",
-      "3. 複製 primary_template 的第 1 張且唯一一張 16:9 NanoSTLab 模板頁，作為每張新內容頁的基底；必須複製整張 slide，不得建立空白 slide，也不得從 excellent_presentation_reference 複製任何主題內容頁。",
-      "4. 依使用者指定的內容頁數複製該內容頁基底；不複製、不生成封面。輸出第一張內容頁就是 Outline。",
-      "5. 每張模板複本保留完整固定 shell。將原始 Title 改成本頁標題，將原始頁碼 0 改成正確頁碼；不得刪除或重建頂部藍黃分隔條、footer、校徽、學校識別、Logo、NanoSTLab、頁碼位置、背景或既有 PPTX 關係。",
-      "6. 在既有 title placeholder 中改寫本頁標題；所有新增科學內容只能放入標題分隔條下方、footer 上方的安全內容區。",
-      "7. 使用模板原有右下頁碼物件，Outline 設為 1，後續依序設為 2、3、4……；不得另外在其他位置新增頁碼。",
-      "8. 加入使用者提供的文字、圖片、表格、公式、citation 與 speaker notes；圖片必須保持比例且不得裁掉科學資訊。",
-      "9. 完成後匯出為仍含有原始 NanoSTLab slide master、custom layouts 與 theme 的 .pptx，不得扁平化成圖片式簡報，也不得輸出一份沒有原模板母片關係的新檔。",
-      "10. 重新開啟輸出的 .pptx，逐頁檢查固定 shell、16:9、頁碼、文字大小、圖片比例、重疊、溢位、遺留 reference-deck 內容及來源正確性。"
-    ],
-    "failure_protection": "本規格預設 AI 支援完整 PPTX 編輯。若實際匯出後無法保留 master/layout/theme 或無法由 PowerPoint 開啟，該輸出即判定失敗，必須修正後重新匯出；禁止交付自行重畫、近似配色、截圖背景或一般 AI 主題代替的版本。",
-    "template_identity_test": "輸出檔必須能在 Microsoft PowerPoint 正常開啟並維持 16:9；每頁必須保有模板第 1 頁的完整固定 shell、原生物件與既有 layout/theme 關係。只有視覺相似、截圖背景或重新繪製不算通過。",
-    "final_assembly": "所有內容頁必須建立在 NanoSTLab 16:9 模板的原始 master/layout 上。AI 只替換或新增內容區物件。",
+    "ai_input": "final_prompt.txt、原始研究報告、原始圖片與實驗室 PowerPoint 模板",
+    "ai_output": "AI 直接在實驗室模板中建立內容頁，輸出已套用模板且保持可編輯的 .pptx。",
+    "final_assembly": "AI 必須使用模板既有母片與版面配置完成簡報；模板封面中的未知姓名、指導教授或日期欄位保留為待補。",
     "locked_elements": [
+      "實驗室封面",
       "頂部標題區",
-      "藍黃分隔條",
-      "底部實驗室 footer",
-      "學校識別",
-      "Logo",
-      "NanoSTLab 字樣",
-      "頁碼位置與樣式",
-      "PowerPoint master、layout、theme 與背景圖形"
+      "底部實驗室識別區",
+      "Logo 位置",
+      "右下頁碼位置",
+      "模板母片與版面配置"
     ],
-    "ai_editable_elements": [
-      "slide title",
-      "scientific content",
-      "figures",
-      "tables",
-      "formulas",
-      "citations",
-      "speaker notes"
-    ],
-    "rule": "固定 shell 不得被 AI 重新設計、重畫、遮蓋、移動、縮放、改色或刪除；內容必須避開標題區與 footer。"
+    "rule": "AI 必須直接使用提供的模板，不得重新設計、仿製或重畫固定元素；所有內容必須保持可編輯。"
   },
   "presentation_structure": {
     "required_sections": [
@@ -237,6 +204,13 @@
     "rule": "最終檔必須保持模板原生 16:9 尺寸，不得轉成 4:3。"
   },
   "template_geometry": {
+<<<<<<< HEAD
+    "title_zone": "使用模板既有標題區與標題預留位置，不新增覆蓋其上的標題框",
+    "content_zone": "所有正文、圖片、公式與表格放在模板內容區，不可遮住母片或版面中的固定圖案",
+    "footer_zone": "保留模板既有頁尾、實驗室識別與頁碼區，不得刪除、重畫或遮蓋",
+    "citation_zone": "引用放在模板頁尾正上方，使用約 10–11 pt 深灰文字",
+    "editable_output": "文字、圖片、表格與圖表均須保持為可編輯物件，不可將整張投影片扁平化成圖片"
+=======
     "coordinate_system_points": "960 x 540",
     "title_placeholder": "模板 slide 1 的 Title 2；left 11.4、top 0、width 960、height 65.9 pt。只可修改文字，不得移動或改變尺寸。",
     "page_number_placeholder": "模板 slide 1 的 Slide Number Placeholder 3；left 905.1、top 479.2、width 45.1、height 27.6 pt。將初始值 0 改為連續頁碼。",
@@ -245,15 +219,40 @@
     "footer": "完整沿用模板中的校徽、學校識別、NanoSTLab 與藍黃 footer，不得重畫或遮蓋。",
     "page_number": "使用模板原有右下頁碼位置；Outline 為 1，後續逐頁加一。",
     "citation_zone": "引用放在內容區底部、footer 上方，約 10-11 pt，不得與頁碼或 footer 重疊。"
+>>>>>>> origin/main
   },
   "content_density": {
     "title": "一行優先；必要時最多兩行。",
     "visible_text": "只保留理解圖表所需的短句、標籤與結論。",
     "paragraphs": false,
+<<<<<<< HEAD
+    "whitespace_ratio": "15%–25%",
+    "max_visible_chinese_characters": 60,
+    "max_visible_english_words": 35,
+    "max_short_labels": 3,
+    "rule": "一張投影片只傳達一個主要訊息；優先刪減文字，不得用縮小字級塞入內容。"
+  },
+  "section_transition": {
+    "layout": "在研究背景、研究方法、研究結果、結論與未來工作之前，各放一張相同版面的 Outline 導覽頁。",
+    "active_section": "即將進入的段落使用黑色 #000000、粗體。",
+    "inactive_sections": "其他段落使用淺灰色 #BFBFBF。",
+    "consistency": "四張導覽頁的文字內容、位置、大小及間距完全一致，只改變黑色段落。"
+  },
+  "visual_storytelling": {
+    "image_first": "先選擇最能支持本頁結論的主圖，再決定文字位置；圖片不是裝飾。",
+    "one_image": "主圖約占內容區 55%–75%，文字只放在圖片留白或外側。",
+    "two_images": "左右等高對齊，用於前後、條件或結果比較；中央可放一個方向箭頭。",
+    "three_images": "依流程水平排列並以箭頭連接，或使用一主兩輔；不得三張任意堆疊。",
+    "arrows": "箭頭只表示時間、流程或因果，統一由左至右或由上至下，不得穿過圖片、文字、座標軸或圖例。",
+    "labels": "每頁最多 3 個短標籤；放在圖片留白或外側，不遮住科學資訊。",
+    "dashed_highlight": "每頁最多用一個細虛線矩形框出關鍵圖或關鍵區域，搭配一個短標籤，不使用大面積裝飾框。",
+    "scientific_integrity": "不得裁掉座標軸、圖例、單位、比例尺、元件標籤或解讀結果所需資訊。"
+=======
     "maximum_primary_messages": 1,
     "maximum_bullet_points": 4,
     "whitespace_ratio": "15%-30%",
     "rule": "一頁一個主要訊息；若內容無法以約 24 pt 清楚呈現，必須拆成多頁。"
+>>>>>>> origin/main
   },
   "image_layout": {
     "allowed_sources": [
@@ -289,11 +288,14 @@
     "missing_citation": null,
     "rule": "只引用使用者來源中可驗證的 citation。不得猜測作者、期刊、年份、DOI 或網址；未知時使用 null 或『待使用者補充』。"
   },
+<<<<<<< HEAD
+=======
   "speaker_notes_style": {
     "length": "每頁約 2-5 句，依報告時間調整",
     "purpose": "補充口頭轉場、圖表閱讀順序、方法限制與下一頁銜接，不重複投影片全文。",
     "rule": "speaker notes 只能根據使用者資料撰寫，不得加入未提供的結果、數值、來源或推論。"
   },
+>>>>>>> origin/main
   "content_accuracy": {
     "use_only_user_sources": true,
     "missing_content_behavior": "使用『待使用者補充』或 null",

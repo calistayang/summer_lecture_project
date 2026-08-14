@@ -8,7 +8,7 @@ def test_result_content_is_split_across_slides():
             "topic": "RRAM",
             "audience": "研究生",
             "duration_minutes": 10,
-            "pages": 8,
+            "pages": 10,
             "language": "繁體中文",
             "style": "學術正式",
         },
@@ -27,3 +27,63 @@ def test_result_content_is_split_across_slides():
     assert prompt.count("第一項結果。第二項結果。第三項結果。") == 0
     assert "第一項結果。" in prompt
     assert "第二項結果。" in prompt
+
+
+def test_prompt_requires_ai_to_use_supplied_template():
+    data = {
+        "requirements": {
+            "topic": "RRAM",
+            "audience": "實驗室教授與成員",
+            "duration_minutes": 10,
+            "pages": 10,
+            "language": "繁體中文",
+            "style": "NanoSTLab 實驗室優良簡報風格",
+        },
+        "text_content": {
+            "background": "這是研究背景。",
+            "methods": "這是研究方法。",
+            "results": "這是研究結果。",
+            "conclusion": "這是研究結論。",
+        },
+        "images": [],
+    }
+
+    analysis = analyze_content(data)
+    prompt = generate_final_prompt(data, {}, analysis)
+
+    assert "完整閱讀" in prompt and "原始研究報告" in prompt
+    assert "直接使用" in prompt and "實驗室 PowerPoint 模板" in prompt
+    assert "保留模板既有封面、母片、Logo、頁首、頁尾" in prompt
+    assert "套用模板既有的內容版面" in prompt
+    assert "已套用實驗室模板的可編輯 .pptx" in prompt
+    assert "不得把整頁轉成單一圖片" in prompt
+
+
+def test_prompt_adds_repeated_section_transition_slides():
+    data = {
+        "requirements": {
+            "topic": "RRAM",
+            "audience": "實驗室教授與成員",
+            "duration_minutes": 10,
+            "pages": 10,
+            "language": "繁體中文",
+            "style": "NanoSTLab 實驗室優良簡報風格",
+        },
+        "text_content": {
+            "background": "研究背景內容。",
+            "methods": "研究方法內容。",
+            "results": "研究結果內容。",
+            "conclusion": "研究結論內容。",
+        },
+        "images": [],
+    }
+
+    prompt = generate_final_prompt(data, {}, analyze_content(data))
+
+    assert prompt.count("Layout: 章節導覽轉場") == 4
+    assert "僅「研究背景」使用黑色 #000000" in prompt
+    assert "僅「研究方法」使用黑色 #000000" in prompt
+    assert "僅「研究結果」使用黑色 #000000" in prompt
+    assert "僅「結論與未來工作」使用黑色 #000000" in prompt
+    assert "淺灰 #BFBFBF" in prompt
+    assert "Speaker Notes:" not in prompt
