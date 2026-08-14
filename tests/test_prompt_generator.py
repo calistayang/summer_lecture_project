@@ -88,4 +88,7 @@ def test_prompt_adds_repeated_section_transition_slides():
     assert "僅「研究結果」使用黑色 #000000" in prompt
     assert "僅「結論與未來工作」使用黑色 #000000" in prompt
     assert "淺灰 #BFBFBF" in prompt
+    assert "研究背景\n研究方法\n研究結果\n結論與未來工作" in prompt
+    assert "由上往下單欄排列、靠左對齊" in prompt
+    assert "不得改成橫向並排" in prompt
     assert "Speaker Notes:" not in prompt
