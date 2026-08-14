@@ -50,7 +50,7 @@ def generate_final_prompt(user_inputs: dict, style_rules: dict, analysis: dict) 
         if image:
             used_images.add(image["filename"])
         if section.startswith("transition:"):
-            slide_text = "研究背景｜研究方法｜研究結果｜結論與未來工作"
+            slide_text = "研究背景\n研究方法\n研究結果\n結論與未來工作"
         else:
             index = section_indexes[section]
             slide_text = section_chunks[section][index]
@@ -137,6 +137,8 @@ def _design_instructions(section: str, has_uploaded_image: bool) -> str:
         active_label = SECTION_LABELS[active]
         return (
             "複製同一張 Outline 版面並保持四段文字位置完全一致；"
+            "四個主章節必須放在同一個內容區中，由上往下單欄排列、靠左對齊並維持一致的垂直間距；"
+            "不得改成橫向並排、卡片、圓圈、流程箭頭或分散到多欄；"
             f"僅「{active_label}」使用黑色 #000000 與粗體，其餘使用淺灰 #BFBFBF；"
             "不放圖片、段落說明或額外裝飾。"
         )
