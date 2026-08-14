@@ -8,9 +8,11 @@
     "rule": "主要依照 2020 年 16:9 簡報的視覺系統；2018 年 4:3 簡報只用於參考學術內容節奏，不可把新簡報改成 4:3。"
   },
   "template_workflow": {
-    "generate_cover_slide": false,
+    "generate_cover_slide": "保留並使用模板既有封面，不另外建立封面",
     "first_generated_slide": "Outline",
-    "final_assembly": "AI 先產生內容頁，再將內容頁複製或套用至實驗室既有 PowerPoint 模板；封面直接使用模板中的封面版型並由使用者填入題目、姓名、指導教授與日期。",
+    "ai_input": "final_prompt.txt、原始研究報告、原始圖片與實驗室 PowerPoint 模板",
+    "ai_output": "AI 直接在實驗室模板中建立內容頁，輸出已套用模板且保持可編輯的 .pptx。",
+    "final_assembly": "AI 必須使用模板既有母片與版面配置完成簡報；模板封面中的未知姓名、指導教授或日期欄位保留為待補。",
     "locked_elements": [
       "實驗室封面",
       "頂部標題區",
@@ -19,7 +21,7 @@
       "右下頁碼位置",
       "模板母片與版面配置"
     ],
-    "rule": "不得由 AI 重新設計或重畫模板固定元素，也不得把內容頁做成另一套現代化模板。"
+    "rule": "AI 必須直接使用提供的模板，不得重新設計、仿製或重畫固定元素；所有內容必須保持可編輯。"
   },
   "presentation_structure": {
     "required_sections": [
@@ -85,18 +87,37 @@
     "background_color": "#FFFFFF"
   },
   "template_geometry": {
-    "title_zone": "投影片頂部約 12% 高度，標題靠左並保持單行優先",
-    "content_zone": "所有研究內容放在標題區下方與頁尾上方，不可覆蓋母片固定元素",
-    "footer": "保留實驗室模板的藍黃識別、學校或實驗室名稱與圖形，不得重畫或遮蓋",
-    "page_number": "右下頁尾內，從 Outline 計為第 1 頁並依序增加",
-    "citation_zone": "頁尾正上方，使用約 10–11 pt 深灰文字"
+    "title_zone": "使用模板既有標題區與標題預留位置，不新增覆蓋其上的標題框",
+    "content_zone": "所有正文、圖片、公式與表格放在模板內容區，不可遮住母片或版面中的固定圖案",
+    "footer_zone": "保留模板既有頁尾、實驗室識別與頁碼區，不得刪除、重畫或遮蓋",
+    "citation_zone": "引用放在模板頁尾正上方，使用約 10–11 pt 深灰文字",
+    "editable_output": "文字、圖片、表格與圖表均須保持為可編輯物件，不可將整張投影片扁平化成圖片"
   },
   "content_density": {
     "title": "簡短且具體",
     "visible_text": "優先使用短句、關鍵詞與數值重點",
     "paragraphs": false,
     "whitespace_ratio": "15%–25%",
-    "rule": "一張投影片只傳達一個主要訊息。"
+    "max_visible_chinese_characters": 60,
+    "max_visible_english_words": 35,
+    "max_short_labels": 3,
+    "rule": "一張投影片只傳達一個主要訊息；優先刪減文字，不得用縮小字級塞入內容。"
+  },
+  "section_transition": {
+    "layout": "在研究背景、研究方法、研究結果、結論與未來工作之前，各放一張相同版面的 Outline 導覽頁。",
+    "active_section": "即將進入的段落使用黑色 #000000、粗體。",
+    "inactive_sections": "其他段落使用淺灰色 #BFBFBF。",
+    "consistency": "四張導覽頁的文字內容、位置、大小及間距完全一致，只改變黑色段落。"
+  },
+  "visual_storytelling": {
+    "image_first": "先選擇最能支持本頁結論的主圖，再決定文字位置；圖片不是裝飾。",
+    "one_image": "主圖約占內容區 55%–75%，文字只放在圖片留白或外側。",
+    "two_images": "左右等高對齊，用於前後、條件或結果比較；中央可放一個方向箭頭。",
+    "three_images": "依流程水平排列並以箭頭連接，或使用一主兩輔；不得三張任意堆疊。",
+    "arrows": "箭頭只表示時間、流程或因果，統一由左至右或由上至下，不得穿過圖片、文字、座標軸或圖例。",
+    "labels": "每頁最多 3 個短標籤；放在圖片留白或外側，不遮住科學資訊。",
+    "dashed_highlight": "每頁最多用一個細虛線矩形框出關鍵圖或關鍵區域，搭配一個短標籤，不使用大面積裝飾框。",
+    "scientific_integrity": "不得裁掉座標軸、圖例、單位、比例尺、元件標籤或解讀結果所需資訊。"
   },
   "image_layout": {
     "one_image": "使用單一主要圖片，約占可用寬度的 45%–70%",
@@ -115,11 +136,6 @@
     "font_size_pt": 10,
     "color": "#666666",
     "rule": "每頁只列出與該頁直接相關且由使用者提供的來源；來源不足時標示『待補』。"
-  },
-  "speaker_notes_style": {
-    "length": "每頁約 2–5 句",
-    "purpose": "解釋主要科學訊息、圖片與結論的關係，必要時提供轉場。",
-    "rule": "講者備註不得加入來源資料中不存在的主張。"
   },
   "content_accuracy": {
     "use_only_user_sources": true,
