@@ -1,11 +1,117 @@
 {
-  "schema_version": "1.0",
-  "source": "member_2_adapted_from_lab_reference_decks",
-  "style_name": "NanoSTLab 實驗室簡報模板",
+  "schema_version": "1.1",
+  "source": "NanoSTLab reference decks and validated 16:9 laboratory template",
+  "style_name": "NanoSTLab 實驗室學術簡報風格",
   "reference_presentations": {
-    "primary": "ITRI-Meeting_Ming-Chun-Hong_20201119_Quantum-Computing_new.pptx",
-    "secondary": "Group-Meeting_Ming-Chun-Hong_20181220.pptx",
-    "rule": "主要依照 2020 年 16:9 簡報的視覺系統；2018 年 4:3 簡報只用於參考學術內容節奏，不可把新簡報改成 4:3。"
+    "primary_template": "data/templates/NanoSTLab_16x9_template.pptx",
+    "primary_template_original_filename": "模板.pptx",
+    "template_distribution": "模板已隨 project 放在 data/templates/NanoSTLab_16x9_template.pptx。生成系統必須把此檔案作為實際 PPTX 輸入交給 AI，不得只傳送 style_rules.json。",
+    "secondary_style_reference": "Group-Meeting_Ming-Chun-Hong_20181220.pptx",
+    "excellent_presentation_reference": "ITRI-Meeting_Ming-Chun-Hong_20201119_Quantum-Computing_new.pptx",
+    "template_usage": "primary_template 是一頁式固定 16:9 PowerPoint shell；必須複製整張模板頁作為每張輸出頁的基底，不得只靠視覺模仿重畫模板。",
+    "analyzed_template": {
+      "slide_count": 1,
+      "aspect_ratio": "16:9",
+      "size_points": "960 x 540",
+      "editable_seed_slide": 1,
+      "initial_title_text": "Title",
+      "initial_page_number_text": "0",
+      "fixed_visual_shell": [
+        "白色背景",
+        "左上大型黑色標題區",
+        "標題下方藍色長條與黃色短條",
+        "左下校徽",
+        "黃色 National Chiao Tung University footer",
+        "右下藍色 NanoSTLab footer",
+        "右下角頁碼"
+      ],
+      "insertion_contract": "複製模板第 1 張整頁，改寫 Title 與頁碼 0；新增內容只放在上方分隔條與下方 footer 之間。模板固定圖形即使是 slide-local object 也必須保留。"
+    },
+    "excellent_deck_analysis": {
+      "slide_count": 117,
+      "aspect_ratio": "16:9",
+      "size_points": "960 x 540",
+      "dominant_fonts": [
+        "Calibri",
+        "Cambria Math",
+        "Arial"
+      ],
+      "observed_font_sizes_pt": [
+        53.3,
+        48,
+        44,
+        32,
+        28,
+        26.7,
+        24,
+        21.3,
+        18.7,
+        16,
+        14,
+        10.7
+      ],
+      "dominant_colors": [
+        "black",
+        "template blue #376092",
+        "technical blue #0000FF",
+        "warning red #FF0000",
+        "white",
+        "light gray"
+      ],
+      "observed_narrative_patterns": [
+        "以歷史時間線建立背景，再提出研究動機與真實問題",
+        "先用 classical-versus-quantum comparison 建立差異，再逐步導入元件、機制與演算法",
+        "同一主題連續使用多張投影片，每頁只增加一層圖、公式、步驟或結論",
+        "方法先呈現總覽，再分解單一元件、操作、流程與公式",
+        "複雜演算法以 goal、步驟、電路、公式、範例與應用分頁說明",
+        "硬體章節由架構總覽進入元件、製程、控制、量測與挑戰",
+        "重要段落後使用 short summary，最後以 summary、connection question 或 future challenges 收束",
+        "大量使用重複底圖與逐頁增量，形成 progressive disclosure"
+      ],
+      "observed_layout_archetypes": [
+        "large figure with short explanatory labels",
+        "left explanation / right scientific figure",
+        "left scientific figure / right explanation",
+        "side-by-side before-after or classical-quantum comparison",
+        "horizontal timeline with milestone images",
+        "process or algorithm flow",
+        "circuit or mechanism diagram with concise labels",
+        "equation plus annotated conceptual figure",
+        "experimental or technical graph plus focused callout",
+        "three-part comparison only when all panels answer the same question",
+        "summary page with a few large visual conclusions"
+      ],
+      "observed_density": {
+        "typical_body_pt": "21.3-26.7",
+        "typical_caption_pt": "14-18.7",
+        "typical_reference_pt": "10.7",
+        "preferred_content": "figures, circuits, equations and short labels",
+        "avoid_copying_dense_examples": "少數公式密集或文字超過約 450 字元的頁面只代表附錄或深度推導，不應成為一般內容頁的密度標準。"
+      },
+      "adaptation_rule": "學習其學術敘事、留白、圖像尺度、比較關係與 progressive disclosure；不複製量子運算的文字、圖片、公式、數據、citation 或結論。"
+    },
+    "learn_only": [
+      "layout",
+      "visual hierarchy",
+      "figure scale",
+      "whitespace",
+      "comparison style",
+      "progressive disclosure",
+      "academic storytelling"
+    ],
+    "forbidden_content_reuse": [
+      "ENIAC",
+      "IBM",
+      "Quantum Computing",
+      "quantum gate",
+      "quantum dot",
+      "MTJ",
+      "MRAM",
+      "spintronics",
+      "neuromorphic computing",
+      "任何與本次研究主題無關的 reference-deck 圖片、數據或文字"
+    ],
+    "rule": "reference decks 只提供版面與敘事參考；不得把其中的科學內容、圖片、數據、公式或引用移植到其他研究主題。"
   },
   "template_workflow": {
     "generate_cover_slide": "保留並使用模板既有封面，不另外建立封面",
@@ -26,77 +132,100 @@
   "presentation_structure": {
     "required_sections": [
       "Outline",
-      "研究背景",
-      "研究方法",
-      "研究結果",
-      "結論與未來工作"
+      "Research Background",
+      "Method / Mechanism / Experimental Setup",
+      "Results / Analysis",
+      "Summary & Future Work"
     ],
+    "first_slide": "Outline",
+    "last_slide": "Summary & Future Work",
     "one_message_per_slide": true,
     "progressive_disclosure": true,
-    "rule": "使用者指定的頁數是 AI 需要產生的內容頁數，不包含實驗室模板封面；Slide 1 必須是 Outline。複雜流程或多組實驗應拆頁。"
+    "split_complex_content": true,
+    "rule": "不生成封面。Slide 1 必須是 Outline 且頁碼為 1。複雜方法、模型、流程或多組結果必須拆成多頁；每頁只講一個主要訊息。"
   },
   "visual_layout": {
-    "style": "學術圖像導向",
+    "style": "academic, scientific, figure-driven",
     "preferred_patterns": [
-      "大圖搭配精簡標註",
-      "左側摘要、右側科學圖表",
-      "左右並列比較",
-      "流程或機制圖搭配短標籤",
-      "主要圖片搭配兩張輔助圖片"
+      "large scientific figure with short labels",
+      "left text / right figure",
+      "left figure / right text",
+      "side-by-side comparison",
+      "timeline",
+      "process flow",
+      "mechanism diagram",
+      "experimental graph with concise callouts",
+      "progressive disclosure"
     ],
     "avoid": [
-      "大段文字",
-      "過長條列",
-      "儀表板式版面",
-      "過度裝飾",
-      "與研究內容無關的圖示"
+      "long paragraphs",
+      "large numbers of bullet points",
+      "dashboard layout",
+      "corporate card layout",
+      "excessive rounded boxes",
+      "irrelevant decorative icons",
+      "dense grids of small panels",
+      "shrinking text to force excess content onto one slide"
     ],
-    "rule": "每頁選擇最適合科學內容的版面，不強制所有投影片使用相同配置。"
+    "rule": "有 source figure 時，figure 優先於文字摘要。圖表與文字需形成清楚的閱讀順序，保留充足留白。"
   },
   "color_palette": {
     "primary_blue": "#376092",
     "technical_emphasis_blue": "#0000FF",
     "accent_yellow": "#F9CB07",
     "main_text": "#000000",
-    "background": "#FFFFFF",
     "warning_red": "#FF0000",
+    "background": "#FFFFFF",
     "supporting_light_blue": "#D3DCED",
-    "reference_gray": "#666666",
-    "rule": "顏色只用於建立資訊層級；若使用者提供參考簡報，優先沿用其可讀且一致的配色邏輯。"
+    "reference_gray": "#222222",
+    "rule": "模板藍與模板黃用於固定 shell；技術重點可用純藍，風險或警告才用紅色。不得自行建立與模板衝突的新主色系。"
   },
   "typography": {
     "font_family": [
-      "Arial",
       "Calibri",
-      "Noto Sans TC"
+      "Arial",
+      "Noto Sans TC",
+      "Microsoft JhengHei"
     ],
-    "title_pt": 48,
-    "preferred_title_range_pt": "48–53",
-    "long_title_pt": 40,
+    "title_pt": 53,
+    "preferred_title_range_pt": "48-53",
+    "long_title_minimum_pt": 40,
     "body_pt": 24,
-    "section_heading_pt": "26–28",
     "minimum_body_pt": 21,
-    "caption_pt": "16–19",
-    "reference_pt": "10–11",
-    "rule": "若內容無法以最低字級清楚呈現，應拆分投影片，不得縮小文字硬塞。"
+    "caption_pt": "16-20",
+    "reference_pt": "10-11",
+    "rule": "優先精簡或拆頁，不得為了塞入內容而持續縮小字體。長標題最低約 40 pt，正文不得低於 21 pt。"
   },
   "slide_size": {
     "aspect_ratio": "16:9",
     "width_inch": 13.333,
     "height_inch": 7.5,
-    "background_color": "#FFFFFF"
+    "background_color": "#FFFFFF",
+    "rule": "最終檔必須保持模板原生 16:9 尺寸，不得轉成 4:3。"
   },
   "template_geometry": {
+<<<<<<< HEAD
     "title_zone": "使用模板既有標題區與標題預留位置，不新增覆蓋其上的標題框",
     "content_zone": "所有正文、圖片、公式與表格放在模板內容區，不可遮住母片或版面中的固定圖案",
     "footer_zone": "保留模板既有頁尾、實驗室識別與頁碼區，不得刪除、重畫或遮蓋",
     "citation_zone": "引用放在模板頁尾正上方，使用約 10–11 pt 深灰文字",
     "editable_output": "文字、圖片、表格與圖表均須保持為可編輯物件，不可將整張投影片扁平化成圖片"
+=======
+    "coordinate_system_points": "960 x 540",
+    "title_placeholder": "模板 slide 1 的 Title 2；left 11.4、top 0、width 960、height 65.9 pt。只可修改文字，不得移動或改變尺寸。",
+    "page_number_placeholder": "模板 slide 1 的 Slide Number Placeholder 3；left 905.1、top 479.2、width 45.1、height 27.6 pt。將初始值 0 改為連續頁碼。",
+    "title_zone": "沿用模板原始頂部標題 placeholder 與藍黃分隔條；只可修改標題文字。",
+    "content_zone": "所有 AI 生成內容只能放在約 left 45-915、top 82-465 pt 的安全內容區；不得進入標題、分隔條、citation、頁碼或 footer。",
+    "footer": "完整沿用模板中的校徽、學校識別、NanoSTLab 與藍黃 footer，不得重畫或遮蓋。",
+    "page_number": "使用模板原有右下頁碼位置；Outline 為 1，後續逐頁加一。",
+    "citation_zone": "引用放在內容區底部、footer 上方，約 10-11 pt，不得與頁碼或 footer 重疊。"
+>>>>>>> origin/main
   },
   "content_density": {
-    "title": "簡短且具體",
-    "visible_text": "優先使用短句、關鍵詞與數值重點",
+    "title": "一行優先；必要時最多兩行。",
+    "visible_text": "只保留理解圖表所需的短句、標籤與結論。",
     "paragraphs": false,
+<<<<<<< HEAD
     "whitespace_ratio": "15%–25%",
     "max_visible_chinese_characters": 60,
     "max_visible_english_words": 35,
@@ -118,63 +247,115 @@
     "labels": "每頁最多 3 個短標籤；放在圖片留白或外側，不遮住科學資訊。",
     "dashed_highlight": "每頁最多用一個細虛線矩形框出關鍵圖或關鍵區域，搭配一個短標籤，不使用大面積裝飾框。",
     "scientific_integrity": "不得裁掉座標軸、圖例、單位、比例尺、元件標籤或解讀結果所需資訊。"
+=======
+    "maximum_primary_messages": 1,
+    "maximum_bullet_points": 4,
+    "whitespace_ratio": "15%-30%",
+    "rule": "一頁一個主要訊息；若內容無法以約 24 pt 清楚呈現，必須拆成多頁。"
+>>>>>>> origin/main
   },
   "image_layout": {
-    "one_image": "使用單一主要圖片，約占可用寬度的 45%–70%",
-    "two_images": "左右並排並維持一致尺寸與對齊",
-    "three_images": "三欄、三階段流程或一主兩輔",
-    "four_images": "2×2 網格",
-    "rule": "只使用使用者提供的圖片及精確檔名；不得拉伸、遮住座標軸、圖例或重要標示。"
+    "allowed_sources": [
+      "本次使用者上傳的圖片",
+      "本次使用者提供之來源文件內的圖片"
+    ],
+    "source_figure_priority": true,
+    "preserve_aspect_ratio": true,
+    "no_cropping_of_scientific_information": true,
+    "must_preserve": [
+      "axis",
+      "legend",
+      "unit",
+      "scale bar",
+      "figure label"
+    ],
+    "one_image": "優先使用大型主圖，搭配少量短標籤或 callout。",
+    "two_images": "使用等比例 side-by-side comparison，尺寸與對齊一致。",
+    "three_images": "僅在同一比較問題下使用，否則拆頁。",
+    "four_images": "原則上拆頁；只有必要的 2x2 科學比較才可使用。",
+    "rule": "圖片不得拉伸；不得裁掉任何科學資訊。禁止使用網路搜尋圖片、AI 生成圖片或 reference presentation 的主題圖片。缺少圖片時填 null 或『待使用者補充』，不得捏造 image filename。"
   },
   "data_and_formula_presentation": {
-    "data": "重要數值使用數值重點、精簡表格、左右比較或圖中標註呈現。",
-    "formula": "公式應獨立呈現並保留符號、上下標、單位與變數名稱。",
-    "rule": "只能使用使用者或來源文件明確提供的數據與公式。"
+    "data": "只呈現來源中明確提供的數據、座標、單位、誤差與實驗條件；以圖表和簡短 callout 說明。",
+    "formula": "只使用來源中存在或可直接、無歧義推導的公式，保留符號定義與單位。",
+    "missing_value": null,
+    "rule": "不得捏造數據、結果、條件、公式或科學結論；資料不足時使用 null 或『待使用者補充』。"
   },
   "citation_style": {
-    "position": "投影片底部",
-    "font_size_pt": 10,
-    "color": "#666666",
-    "rule": "每頁只列出與該頁直接相關且由使用者提供的來源；來源不足時標示『待補』。"
+    "position": "內容區底部、NanoSTLab footer 上方",
+    "font_size_pt": "10-11",
+    "color": "#222222",
+    "missing_citation": null,
+    "rule": "只引用使用者來源中可驗證的 citation。不得猜測作者、期刊、年份、DOI 或網址；未知時使用 null 或『待使用者補充』。"
   },
+<<<<<<< HEAD
+=======
+  "speaker_notes_style": {
+    "length": "每頁約 2-5 句，依報告時間調整",
+    "purpose": "補充口頭轉場、圖表閱讀順序、方法限制與下一頁銜接，不重複投影片全文。",
+    "rule": "speaker notes 只能根據使用者資料撰寫，不得加入未提供的結果、數值、來源或推論。"
+  },
+>>>>>>> origin/main
   "content_accuracy": {
     "use_only_user_sources": true,
-    "missing_content_behavior": "標示『待使用者補充』或 null",
+    "missing_content_behavior": "使用『待使用者補充』或 null",
     "prohibited": [
-      "捏造數值",
-      "捏造實驗結果",
-      "捏造公式",
-      "捏造引用",
-      "捏造圖片檔名",
-      "捏造研究結論"
+      "fabricated data",
+      "fabricated experimental results",
+      "fabricated experimental conditions",
+      "fabricated formulas",
+      "fabricated citations",
+      "fabricated image filenames",
+      "fabricated scientific conclusions",
+      "unrelated reference-deck content",
+      "web images or AI-generated scientific figures not supplied by the user"
     ]
   },
   "reference_style_adaptation": {
-    "rule": "若使用者提供參考簡報或截圖，先分析其標題、頁首頁尾、配色、圖片比例、對齊與留白，再將視覺規則一致地套用到新簡報。",
+    "rule": "保留 NanoSTLab 的 layout、hierarchy、image scale、whitespace、comparison style、progressive disclosure 與 academic storytelling；不複製 reference deck 的具體科學內容。",
     "preserve": [
-      "視覺層級",
-      "標題處理",
-      "配色邏輯",
-      "圖片呈現方式",
-      "版面節奏",
-      "頁碼位置"
+      "16:9 master and layouts",
+      "title hierarchy",
+      "blue-yellow separator",
+      "footer and school identity",
+      "logo and NanoSTLab mark",
+      "page number placement",
+      "academic figure scale",
+      "comparison rhythm",
+      "progressive disclosure"
     ],
     "do_not_copy": [
-      "無關的科學內容",
-      "無關的數據",
-      "無關的圖片",
-      "無關的引用"
+      "reference-deck text",
+      "reference-deck figures",
+      "reference-deck data",
+      "reference-deck formulas",
+      "reference-deck citations",
+      "reference-deck scientific conclusions"
     ]
   },
   "quality_control": {
     "checks": [
-      "投影片數量符合使用者需求",
+      "沒有生成封面",
+      "Slide 1 是 Outline 且頁碼為 1",
+      "內容頁數等於使用者指定頁數",
+      "頁碼從 1 開始連續遞增",
+      "最終尺寸為 16:9",
+      "每頁沿用原 NanoSTLab master/layout 與固定 shell",
+      "輸出檔是由 primary_template 的複本組裝，而不是從空白簡報建立",
+      "每張內容頁由模板既有內容頁整張複製，沒有以近似圖形重畫 shell",
+      "PowerPoint 的投影片母片與版面配置中仍可辨識原 NanoSTLab master/layout/theme",
+      "輸出 PPTX 能由 Microsoft PowerPoint 正常重新開啟",
+      "固定標題區、藍黃分隔條、footer、校徽、Logo、NanoSTLab 與頁碼未被改動或遮蓋",
       "每頁只有一個主要訊息",
-      "所有圖片檔名來自使用者輸入",
-      "沒有捏造數據或引用",
-      "文字與圖片不重疊",
-      "字級與留白保持可讀",
-      "研究背景、方法、結果與結論均有涵蓋"
+      "整體為 academic、figure-driven layout",
+      "沒有長段落、dashboard、corporate cards、過多 rounded boxes 或無關 icons",
+      "所有圖片等比例且 axis、legend、unit、scale bar、figure label 完整",
+      "只使用本次使用者提供的圖片或來源文件圖片",
+      "未重用 reference deck 的 ENIAC、IBM、Quantum Computing、MTJ、MRAM 等內容",
+      "沒有捏造數據、結果、條件、公式、citation、image filename 或科學結論",
+      "資料不足處使用『待使用者補充』或 null",
+      "文字沒有因塞版而縮小到 minimum body 21 pt 以下",
+      "所有內容均位於安全內容區，沒有與 title、citation、footer 或 page number 重疊"
     ]
   }
 }

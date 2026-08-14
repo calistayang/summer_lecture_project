@@ -5,7 +5,7 @@ from uuid import uuid4
 import streamlit as st
 
 from modules.integration import run_pipeline
-from modules.validators import MAX_IMAGE_BYTES
+from modules.validators import MAX_IMAGE_BYTES, TEXT_MAX_CHARS
 
 BASE_DIR = Path(__file__).resolve().parent
 OUTPUT_DIR = BASE_DIR / "outputs"
@@ -102,7 +102,7 @@ st.markdown(
         color: #FFFFFF !important;
     }
 
-    /* 滑鼠移到按鈕時使用黃色 */
+    /* 滑鼠移到按鈕時使用黃色的 */
     .stButton > button:hover,
     .stFormSubmitButton > button:hover {
         color: #2F3542;
@@ -174,10 +174,31 @@ with st.form("presentation_form"):
     language = col2.selectbox("語言 *", ["繁體中文", "英文", "中英雙語"])
 
     st.subheader("二、研究內容")
-    background = st.text_area("研究背景 *", height=120)
-    methods = st.text_area("方法 *", height=120)
-    results = st.text_area("結果 *", height=120)
-    conclusion = st.text_area("結論 *", height=120)
+    st.caption("請貼上與簡報直接相關的重點；不要在單一欄位貼入整篇論文。字數包含空格與標點。")
+    background = st.text_area(
+        "研究背景 *",
+        height=120,
+        max_chars=TEXT_MAX_CHARS["background"],
+        help=f"研究動機、問題與技術限制，最多 {TEXT_MAX_CHARS['background']:,} 字。",
+    )
+    methods = st.text_area(
+        "方法 *",
+        height=120,
+        max_chars=TEXT_MAX_CHARS["methods"],
+        help=f"材料、元件、設備、流程與分析方式，最多 {TEXT_MAX_CHARS['methods']:,} 字。",
+    )
+    results = st.text_area(
+        "結果 *",
+        height=120,
+        max_chars=TEXT_MAX_CHARS["results"],
+        help=f"主要觀察、數據、比較與限制，最多 {TEXT_MAX_CHARS['results']:,} 字。",
+    )
+    conclusion = st.text_area(
+        "結論 *",
+        height=120,
+        max_chars=TEXT_MAX_CHARS["conclusion"],
+        help=f"研究發現、限制與未來工作，最多 {TEXT_MAX_CHARS['conclusion']:,} 字。",
+    )
 
     st.subheader("三、圖片")
     uploaded_files = st.file_uploader("上傳 PNG、JPG 或 JPEG（每張最多 10 MB）", type=["png", "jpg", "jpeg"], accept_multiple_files=True)
