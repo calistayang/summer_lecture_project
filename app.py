@@ -1,4 +1,3 @@
-import json
 import re
 from pathlib import Path
 from uuid import uuid4
@@ -6,7 +5,7 @@ from uuid import uuid4
 import streamlit as st
 
 from modules.integration import run_pipeline
-from modules.validators import MAX_IMAGE_BYTES
+from modules.validators import MAX_IMAGE_BYTES, TEXT_MAX_CHARS
 
 BASE_DIR = Path(__file__).resolve().parent
 OUTPUT_DIR = BASE_DIR / "outputs"
@@ -103,7 +102,7 @@ st.markdown(
         color: #FFFFFF !important;
     }
 
-    /* 滑鼠移到按鈕時使用黃色 123*/
+    /* 滑鼠移到按鈕時使用黃色的 */
     .stButton > button:hover,
     .stFormSubmitButton > button:hover {
         color: #2F3542;
@@ -171,14 +170,35 @@ with st.form("presentation_form"):
     col1, col2 = st.columns(2)
     topic = col1.text_input("主題 *")
     duration = col2.number_input("報告時間（分鐘）*", 1, 180, 10)
-    pages = col1.number_input("內容投影片頁數（不含模板封面）*", 5, 50, 8)
+    pages = col1.number_input("內容投影片頁數（不含模板封面）*", 8, 50, 8)
     language = col2.selectbox("語言 *", ["繁體中文", "英文", "中英雙語"])
 
     st.subheader("二、研究內容")
-    background = st.text_area("研究背景 *", height=120)
-    methods = st.text_area("方法 *", height=120)
-    results = st.text_area("結果 *", height=120)
-    conclusion = st.text_area("結論 *", height=120)
+    st.caption("請貼上與簡報直接相關的重點；不要在單一欄位貼入整篇論文。字數包含空格與標點。")
+    background = st.text_area(
+        "研究背景 *",
+        height=120,
+        max_chars=TEXT_MAX_CHARS["background"],
+        help=f"研究動機、問題與技術限制，最多 {TEXT_MAX_CHARS['background']:,} 字。",
+    )
+    methods = st.text_area(
+        "方法 *",
+        height=120,
+        max_chars=TEXT_MAX_CHARS["methods"],
+        help=f"材料、元件、設備、流程與分析方式，最多 {TEXT_MAX_CHARS['methods']:,} 字。",
+    )
+    results = st.text_area(
+        "結果 *",
+        height=120,
+        max_chars=TEXT_MAX_CHARS["results"],
+        help=f"主要觀察、數據、比較與限制，最多 {TEXT_MAX_CHARS['results']:,} 字。",
+    )
+    conclusion = st.text_area(
+        "結論 *",
+        height=120,
+        max_chars=TEXT_MAX_CHARS["conclusion"],
+        help=f"研究發現、限制與未來工作，最多 {TEXT_MAX_CHARS['conclusion']:,} 字。",
+    )
 
     st.subheader("三、圖片")
     uploaded_files = st.file_uploader("上傳 PNG、JPG 或 JPEG（每張最多 10 MB）", type=["png", "jpg", "jpeg"], accept_multiple_files=True)
@@ -206,7 +226,13 @@ if submitted:
         safe_name = f"{safe_stem}_{uuid4().hex[:8]}{Path(uploaded.name).suffix.lower()}"
         saved_path = UPLOAD_DIR / safe_name
         saved_path.write_bytes(data)
-        image_records.append({"filename": safe_name, "type": image_type, "description": description.strip(), "purpose": purpose.strip()})
+        image_records.append({
+            "filename": Path(uploaded.name).name,
+            "stored_filename": safe_name,
+            "type": image_type,
+            "description": description.strip(),
+            "purpose": purpose.strip(),
+        })
 
     user_inputs = {
         "schema_version": "1.0",
@@ -235,16 +261,16 @@ if submitted:
             st.success(f"完成。品質檢查：{'通過' if result['quality']['passed'] else '需要修正'}")
             if result["quality"]["errors"]:
                 st.warning("\n".join(result["quality"]["errors"]))
-            tabs = st.tabs(["style_rules.json", "content_analysis.json", "final_prompt.txt"])
-            style_json = json.dumps(result["style_rules"], ensure_ascii=False, indent=2)
-            analysis_json = json.dumps(result["content_analysis"], ensure_ascii=False, indent=2)
-            with tabs[0]:
-                st.json(result["style_rules"])
-                st.download_button("下載 style_rules.json", style_json, "style_rules.json", "application/json")
-            with tabs[1]:
-                st.json(result["content_analysis"])
-                st.download_button("下載 content_analysis.json", analysis_json, "content_analysis.json", "application/json")
-            with tabs[2]:
-                st.code(result["final_prompt"], language="markdown")
-                st.download_button("下載 final_prompt.txt", result["final_prompt"], "final_prompt.txt", "text/plain")
+            st.subheader("四、最終 Prompt")
+            st.code(result["final_prompt"], language="markdown")
+            st.download_button(
+                "下載 final_prompt.txt",
+                result["final_prompt"],
+                "final_prompt.txt",
+                "text/plain",
+            )
+            st.info(
+                "下一步：將 final_prompt.txt、原始研究報告、原始圖片與實驗室 PowerPoint 模板一起交給 AI。"
+                "請 AI 直接使用模板的母片與版面配置，輸出套好模板的可編輯簡報。"
+            )
             st.caption(f"本次檔案儲存在：{result['output_dir']}")

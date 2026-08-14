@@ -2,7 +2,7 @@ import re
 
 REQUIRED_FIELDS = [
     "Title:", "Main Message:", "Layout:", "Text:", "Image Filename:",
-    "Data or Formula:", "Citation:", "Speaker Notes:", "Design Instructions:",
+    "Data or Formula:", "Citation:", "Design Instructions:",
 ]
 
 
