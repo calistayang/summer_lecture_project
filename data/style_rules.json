@@ -257,7 +257,8 @@
       "dense grids of small panels",
       "shrinking text to force excess content onto one slide"
     ],
-    "rule": "有 source figure 時，figure 優先於文字摘要。圖表與文字需形成清楚的閱讀順序，保留充足留白。"
+    "layout_variation_rule": "相鄰內容頁不得連續使用完全相同的構圖；依內容輪替大型主圖、左圖右文、左文右圖、左右比較、流程、機制圖與全寬結果圖，但所有版型仍須遵守同一模板 shell。",
+    "rule": "有 source figure 時，figure 優先於文字摘要。主圖應占安全內容區約 55%-70%，不可縮成小圖。圖表與文字需形成清楚的閱讀順序，保留充足留白。"
   },
   "color_palette": {
     "primary_blue": "#376092",
@@ -318,6 +319,8 @@
       "本次使用者提供之來源文件內的圖片"
     ],
     "source_figure_priority": true,
+    "main_figure_area_ratio": "55%-70% of the safe content zone",
+    "minimum_legibility": "圖中的 axis、legend、unit、scale bar、figure label 與關鍵數值必須能在全頁檢視時清楚閱讀；若無法閱讀，放大圖片或拆頁。",
     "preserve_aspect_ratio": true,
     "no_cropping_of_scientific_information": true,
     "must_preserve": [
@@ -337,13 +340,20 @@
     "data": "只呈現來源中明確提供的數據、座標、單位、誤差與實驗條件；以圖表和簡短 callout 說明。",
     "formula": "只使用來源中存在或可直接、無歧義推導的公式，保留符號定義與單位。",
     "missing_value": null,
-    "rule": "不得捏造數據、結果、條件、公式或科學結論；資料不足時使用 null 或『待使用者補充』。"
+    "result_explanation_structure": [
+      "Result judgment：相對明確基準指出較好、較差、增加、降低、持平或無顯著差異",
+      "Numerical evidence：列出來源中明確提供的數值、單位、比較條件、基準值及差值或比例",
+      "Scientific interpretation：用一句簡短解釋說明證據支持的科學意義或可能機制"
+    ],
+    "result_callout_rule": "每張結果頁至少包含一個結論式 callout，必須同時指出比較方向與數值證據，例如『Mobility 由 8.2 提升至 12.5 cm²/V·s（+52%）』。只有來源明確提供或可直接計算時才能使用；否則寫『數值證據待使用者補充』。",
+    "rule": "不得捏造數據、結果、條件、公式、好壞判斷或科學結論；所有結果判斷都要有明確基準與數值證據。資料不足時使用 null 或『待使用者補充』。"
   },
   "citation_style": {
-    "position": "左下方、黃色學校 footer 正上方的白色區域，貼近但不進入黃色 footer",
+    "position": "左下方、黃色學校 footer 正上方的白色區域，靠近頁面左邊緣與 footer 上緣，但不進入黃色 footer",
     "horizontal_alignment": "left",
     "maximum_width": "不得超過黃色 footer 的右側邊界，不得進入藍色 NanoSTLab footer 或頁碼區",
-    "clearance": "引用文字底部與黃色 footer 頂緣保留約 4-8 pt 間距",
+    "edge_offset": "距投影片左邊約 12-20 pt",
+    "clearance": "引用文字底部與黃色 footer 頂緣保留約 3-6 pt 間距",
     "font_size_pt": "12-14",
     "color": "#222222",
     "missing_citation": null,
@@ -392,6 +402,7 @@
     ]
   },
   "quality_control": {
+    "failure_policy": "下列任一檢查不通過時，簡報不得交付；必須重新排版、放大內容、補上 Outline 子標題或修正結果解說後再驗證。不得以『版面空間不足』為理由縮小正文或主圖。",
     "checks": [
       "沒有生成封面",
       "Slide 1 是 Outline 且頁碼為 1",
@@ -406,6 +417,15 @@
       "固定標題區、藍黃分隔條、footer、校徽、Logo、NanoSTLab 與頁碼未被改動或遮蓋",
       "每頁只有一個主要訊息",
       "整體為 academic、figure-driven layout",
+      "一般內容正文以 24 pt 為基準，除 caption 與 citation 外不得任意縮小；正文絕對不得低於 21 pt",
+      "主圖占安全內容區約 55%-70%，圖中的座標軸、圖例、單位、比例尺、標籤與關鍵數值可清楚閱讀",
+      "Outline 使用藍色空心方框主章節與黃色實心菱形子標題；每個主章節包含 1-3 個來源支持的子標題",
+      "Outline 沒有使用 01-04 數字卡片、左右雙欄、圓角卡片或沒有子標題的純章節清單",
+      "相鄰內容頁沒有連續使用完全相同的排版；已依內容輪替大型主圖、左右圖文、比較、流程、機制或全寬結果圖",
+      "文獻引用使用 12-14 pt，位於左下方、距左邊約 12-20 pt，貼近黃色 footer 上緣但沒有進入或遮蓋 footer",
+      "每張結果頁都有明確的結果判斷、數值證據與科學解釋，而不是只貼圖或只重述圖表標題",
+      "結果判斷清楚說明相對基準是較好、較差、增加、降低、持平或無顯著差異",
+      "結果的數值證據包含來源提供的數值、單位、比較條件、基準值與差值或比例；資料不足時明確標示『數值證據待使用者補充』",
       "沒有長段落、dashboard、corporate cards、過多 rounded boxes 或無關 icons",
       "所有圖片等比例且 axis、legend、unit、scale bar、figure label 完整",
       "只使用本次使用者提供的圖片或來源文件圖片",
