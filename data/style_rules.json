@@ -172,6 +172,63 @@
     ],
     "first_slide": "Outline",
     "last_slide": "Summary & Future Work",
+    "outline_layout": {
+      "layout_type": "single-column hierarchical academic outline",
+      "title": "Outline",
+      "content_zone": "在模板標題分隔條下方，以單欄由上到下排列；不得使用編號卡片、左右欄、流程圖、dashboard 或 corporate card layout。",
+      "primary_section_marker": {
+        "shape": "small hollow square",
+        "fill": "#FFFFFF",
+        "outline": "#376092",
+        "outline_weight": "約 3-4 pt",
+        "size": "約 18-22 pt",
+        "alignment": "與主章節文字第一行垂直置中"
+      },
+      "primary_section_text": {
+        "font": "Calibri 或模板相容的無襯線字體",
+        "font_size_pt": "約 26.7-32",
+        "weight": "bold",
+        "color": "#000000",
+        "indent": "空心方框右側約 10-14 pt",
+        "examples": [
+          "Research Background",
+          "Method / Mechanism / Experimental Setup",
+          "Results / Analysis",
+          "Summary & Future Work"
+        ]
+      },
+      "secondary_item_marker": {
+        "shape": "small solid diamond",
+        "fill": "#F9CB07",
+        "outline": "#F9CB07",
+        "size": "約 14-18 pt",
+        "indent": "相對主章節向右縮排約 45-55 pt"
+      },
+      "secondary_item_text": {
+        "font_size_pt": "約 24-28",
+        "weight": "regular",
+        "color": "#000000",
+        "indent": "黃色菱形右側約 8-12 pt"
+      },
+      "spacing": {
+        "between_primary_sections": "約 42-70 pt；有子項目時從最後一個子項目算起",
+        "between_secondary_items": "約 8-16 pt",
+        "line_spacing": "保持寬鬆且一致，不得壓縮成密集 bullet list"
+      },
+      "subtitle_requirement": "每個主要章節原則上必須包含 1-3 個第二層子標題，使用黃色實心菱形。子標題應從使用者提供的研究內容、方法步驟、結果類型或未來工作中摘要，不得捏造新研究內容。",
+      "subtitle_wording": "每個子標題使用簡短名詞片語或研究問題，避免完整長句；建議英文不超過約 8-10 個字、中文不超過約 14-18 個字。",
+      "content_rule": "Outline 只列主要章節與第二層子標題。主要章節使用藍色空心方框；每個主要章節下方使用 1-3 個黃色實心菱形子標題。若來源內容不足，使用『待使用者補充』，不得為了填滿版面捏造子標題。",
+      "forbidden": [
+        "01、02、03、04 等數字方塊",
+        "左側章節名稱、右側說明的雙欄版型",
+        "圓角卡片",
+        "章節之間使用箭頭或流程線",
+        "每個項目加外框",
+        "使用與內容無關的 icon",
+        "把 Outline 寫成長句或摘要段落"
+      ],
+      "visual_reference_rule": "版面必須與使用者提供的 Outline 範例一致：上方為固定 NanoSTLab title shell；正文是藍色空心方框主項目與黃色菱形子項目的單欄階層清單；底部模板 footer 與頁碼 1 完整保留。"
+    },
     "one_message_per_slide": true,
     "progressive_disclosure": true,
     "split_complex_content": true,
@@ -226,7 +283,7 @@
     "body_pt": 24,
     "minimum_body_pt": 21,
     "caption_pt": "16-20",
-    "reference_pt": "10-11",
+    "reference_pt": "12-14",
     "rule": "優先精簡或拆頁，不得為了塞入內容而持續縮小字體。長標題最低約 40 pt，正文不得低於 21 pt。"
   },
   "slide_size": {
@@ -244,7 +301,7 @@
     "content_zone": "所有 AI 生成內容只能放在約 left 45-915、top 82-465 pt 的安全內容區；不得進入標題、分隔條、citation、頁碼或 footer。",
     "footer": "完整沿用模板中的校徽、學校識別、NanoSTLab 與藍黃 footer，不得重畫或遮蓋。",
     "page_number": "使用模板原有右下頁碼位置；Outline 為 1，後續逐頁加一。",
-    "citation_zone": "引用放在內容區底部、footer 上方，約 10-11 pt，不得與頁碼或 footer 重疊。"
+    "citation_zone": "引用固定放在左下方，緊鄰黃色學校 footer 的上方白色區域；與黃色 footer 左緣對齊，但不得寫進黃色區塊、遮蓋校徽或校名，也不得延伸到右側藍色 NanoSTLab 與頁碼區。使用 12-14 pt。"
   },
   "content_density": {
     "title": "一行優先；必要時最多兩行。",
@@ -283,11 +340,14 @@
     "rule": "不得捏造數據、結果、條件、公式或科學結論；資料不足時使用 null 或『待使用者補充』。"
   },
   "citation_style": {
-    "position": "內容區底部、NanoSTLab footer 上方",
-    "font_size_pt": "10-11",
+    "position": "左下方、黃色學校 footer 正上方的白色區域，貼近但不進入黃色 footer",
+    "horizontal_alignment": "left",
+    "maximum_width": "不得超過黃色 footer 的右側邊界，不得進入藍色 NanoSTLab footer 或頁碼區",
+    "clearance": "引用文字底部與黃色 footer 頂緣保留約 4-8 pt 間距",
+    "font_size_pt": "12-14",
     "color": "#222222",
     "missing_citation": null,
-    "rule": "只引用使用者來源中可驗證的 citation。不得猜測作者、期刊、年份、DOI 或網址；未知時使用 null 或『待使用者補充』。"
+    "rule": "只引用使用者來源中可驗證的 citation。文獻參考使用 12-14 pt，放在黃色學校 footer 旁邊的白色區域，不得覆蓋黃色 footer 內的校徽與學校名稱。不得猜測作者、期刊、年份、DOI 或網址；未知時使用 null 或『待使用者補充』。"
   },
   "speaker_notes_style": {
     "length": "每頁約 2-5 句，依報告時間調整",
