@@ -290,10 +290,10 @@
     "preferred_title_range_pt": "48-53",
     "long_title_minimum_pt": 40,
     "body_pt": 24,
-    "minimum_body_pt": 21,
+    "minimum_body_pt": 24,
     "caption_pt": "16-20",
     "reference_pt": "12-14",
-    "rule": "優先精簡或拆頁，不得為了塞入內容而持續縮小字體。長標題最低約 40 pt，正文不得低於 21 pt。"
+    "rule": "優先精簡或拆頁，不得為了塞入內容而持續縮小字體。長標題最低約 40 pt；一般正文、項目清單與圖旁結論不得低於 24 pt。只有 caption 16-20 pt 與 citation 12-14 pt 可以更小。"
   },
   "slide_size": {
     "aspect_ratio": "16:9",
@@ -425,7 +425,7 @@
       "固定標題區、藍黃分隔條、footer、校徽、Logo、NanoSTLab 與頁碼未被改動或遮蓋",
       "每頁只有一個主要訊息",
       "整體為 academic、figure-driven layout",
-      "一般內容正文以 24 pt 為基準，除 caption 與 citation 外不得任意縮小；正文絕對不得低於 21 pt",
+      "一般內容正文、項目清單與圖旁結論以 24 pt 為絕對下限；只有 caption 16-20 pt 與 citation 12-14 pt 可以更小",
       "主圖占安全內容區約 55%-70%，圖中的座標軸、圖例、單位、比例尺、標籤與關鍵數值可清楚閱讀",
       "Outline 使用藍色空心方框主章節與黃色實心菱形子標題；每個主章節包含 1-3 個來源支持的子標題",
       "Outline 沒有使用 01-04 數字卡片、左右雙欄、圓角卡片或沒有子標題的純章節清單",
@@ -440,7 +440,7 @@
       "未重用 reference deck 的 ENIAC、IBM、Quantum Computing、MTJ、MRAM 等內容",
       "沒有捏造數據、結果、條件、公式、citation、image filename 或科學結論",
       "資料不足處使用『待使用者補充』或 null",
-      "文字沒有因塞版而縮小到 minimum body 21 pt 以下",
+      "文字沒有因塞版而縮小到 minimum body 24 pt 以下",
       "所有內容均位於安全內容區，沒有與 title、citation、footer 或 page number 重疊"
     ]
   }
