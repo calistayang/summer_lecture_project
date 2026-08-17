@@ -102,7 +102,7 @@ st.markdown(
         color: #FFFFFF !important;
     }
 
-    /* 滑鼠移到按鈕時使用黃色的 */
+    /* 滑鼠移到按鈕時使用黃色 */
     .stButton > button:hover,
     .stFormSubmitButton > button:hover {
         color: #2F3542;
@@ -158,12 +158,200 @@ st.markdown(
         background-color: #D5E4F3 !important;
         border-color: #6F98C4 !important;
     }
+
+    /* 深色模式：深海藍＋灰米色＋深棕色 */
+
+    /* Streamlit 選單手動指定 Dark theme 時也套用相同配色 */
+    [data-theme="dark"] .stApp,
+    [data-theme="dark"] [data-testid="stAppViewContainer"] {
+        background-color: #001F3D !important;
+        color: #F3F0DF !important;
+    }
+
+    [data-theme="dark"] h1,
+    [data-theme="dark"] h2,
+    [data-theme="dark"] h3,
+    [data-theme="dark"] label,
+    [data-theme="dark"] [data-testid="stWidgetLabel"] p,
+    [data-theme="dark"] [data-testid="stMarkdownContainer"] p,
+    [data-theme="dark"] [data-testid="stCaptionContainer"] {
+        color: #F3F0DF !important;
+    }
+
+    [data-theme="dark"] [data-testid="stTextInput"] input,
+    [data-theme="dark"] [data-testid="stTextArea"] textarea,
+    [data-theme="dark"] [data-testid="stNumberInput"] input {
+        color: #082B4C !important;
+        -webkit-text-fill-color: #082B4C !important;
+        background-color: #C9C7AD !important;
+    }
+
+    [data-theme="dark"] [data-baseweb="input"],
+    [data-theme="dark"] [data-baseweb="select"] > div {
+        background-color: #2B0C00 !important;
+        border-color: #2B0C00 !important;
+    }
+
+    [data-theme="dark"] [data-baseweb="select"] input,
+    [data-theme="dark"] [data-baseweb="select"] span,
+    [data-theme="dark"] [data-baseweb="select"] div,
+    [data-theme="dark"] [data-testid="stNumberInput"] button,
+    [data-theme="dark"] [data-testid="stNumberInput"] button svg {
+        color: #FFF8ED !important;
+        fill: #FFF8ED !important;
+        -webkit-text-fill-color: #FFF8ED !important;
+    }
+
+    [data-theme="dark"] [data-testid="stFileUploaderDropzone"] {
+        color: #F3F0DF !important;
+        background-color: #0B3A67 !important;
+        border-color: #C9C7AD !important;
+    }
+
+    [data-theme="dark"] [data-testid="stFileUploaderDropzone"] div,
+    [data-theme="dark"] [data-testid="stFileUploaderDropzone"] span,
+    [data-theme="dark"] [data-testid="stFileUploaderDropzone"] small,
+    [data-theme="dark"] [data-testid="stFileUploaderDropzone"] svg {
+        color: #F3F0DF !important;
+        fill: #F3F0DF !important;
+    }
+
+    [data-theme="dark"] [data-testid="stAlert"] {
+        background-color: #0B3A67 !important;
+        border-color: #71849A !important;
+    }
+
+    [data-theme="dark"] [data-testid="stAlert"] div,
+    [data-theme="dark"] [data-testid="stAlert"] p,
+    [data-theme="dark"] [data-testid="stAlert"] span,
+    [data-theme="dark"] [data-testid="stAlert"] svg {
+        color: #F3F0DF !important;
+        fill: #F3F0DF !important;
+    }
+
+    [data-theme="dark"] [data-testid="stFileUploaderDropzone"] button,
+    [data-theme="dark"] .stButton > button,
+    [data-theme="dark"] .stFormSubmitButton > button,
+    [data-theme="dark"] .stDownloadButton > button {
+        color: #FFF8ED !important;
+        background-color: #2B0C00 !important;
+        border-color: #8A4B33 !important;
+    }
+
+    /* Streamlit 數字欄位與下拉選單的實際深色控制層 */
+    [data-theme="dark"] [data-testid="stTextInput"] [data-baseweb="input"],
+    [data-theme="dark"] [data-testid="stNumberInput"] [data-baseweb="input"],
+    [data-theme="dark"] [data-testid="stNumberInput"] [data-baseweb="base-input"],
+    [data-theme="dark"] [data-testid="stNumberInput"] div:has(> button),
+    [data-theme="dark"] [data-testid="stNumberInput"] button,
+    [data-theme="dark"] [data-testid="stSelectbox"] [data-baseweb="select"] > div,
+    [data-theme="dark"] [data-testid="stSelectbox"] [role="combobox"] {
+        background: #2B0C00 !important;
+        background-color: #2B0C00 !important;
+        border-color: #2B0C00 !important;
+    }
+
+    [data-theme="dark"] [data-testid="stNumberInput"] button,
+    [data-theme="dark"] [data-testid="stNumberInput"] button svg,
+    [data-theme="dark"] [data-testid="stSelectbox"] [role="combobox"],
+    [data-theme="dark"] [data-testid="stSelectbox"] [role="combobox"] span,
+    [data-theme="dark"] [data-testid="stSelectbox"] [role="combobox"] svg {
+        color: #FFF8ED !important;
+        fill: #FFF8ED !important;
+        -webkit-text-fill-color: #FFF8ED !important;
+    }
+
+
+    /* 最後統一深色控制列，避免箭頭區或外框殘留藍黑色 */
+    [data-theme="dark"] [data-testid="stTextInput"] [data-baseweb="input"],
+    [data-theme="dark"] [data-testid="stNumberInput"] [data-baseweb="input"] {
+        background: #2B0C00 !important;
+        border-color: #2B0C00 !important;
+        box-shadow: 0 0 0 3px #2B0C00 !important;
+    }
+
+    [data-theme="dark"] [data-testid="stNumberInput"] button,
+    [data-theme="dark"] [data-testid="stNumberInput"] div:has(> button),
+    [data-theme="dark"] [data-testid="stSelectbox"] [data-baseweb="select"],
+    [data-theme="dark"] [data-testid="stSelectbox"] [role="combobox"],
+    [data-theme="dark"] [data-testid="stSelectbox"] [role="combobox"] > div,
+    [data-theme="dark"] [data-testid="stSelectbox"] [role="combobox"] div {
+        background: #2B0C00 !important;
+        background-color: #2B0C00 !important;
+        border-color: #2B0C00 !important;
+        box-shadow: none !important;
+    }
+
+
+    /* 下拉箭頭是 combobox 的獨立兄弟節點，需由 select 根節點一起覆蓋 */
+    [data-theme="dark"] [data-testid="stSelectbox"] [data-baseweb="select"],
+    [data-theme="dark"] [data-testid="stSelectbox"] [data-baseweb="select"] > div,
+    [data-theme="dark"] [data-testid="stSelectbox"] [data-baseweb="select"] > div > div,
+    [data-theme="dark"] [data-testid="stSelectbox"] [data-baseweb="select"] button {
+        background: #2B0C00 !important;
+        background-color: #2B0C00 !important;
+        border-color: #2B0C00 !important;
+    }
+
+
+    /* BaseWeb 會把箭頭 enhancer 放在更深的匿名節點中 */
+    [data-theme="dark"] [data-testid="stSelectbox"] [data-baseweb="select"] *,
+    [data-theme="dark"] [data-testid="stSelectbox"] [role="combobox"] *,
+    [data-theme="dark"] [data-testid="stSelectbox"] div:has(> [role="combobox"]),
+    [data-theme="dark"] [data-testid="stSelectbox"] [role="combobox"] ~ *,
+    [data-theme="dark"] [data-testid="stSelectbox"] [data-baseweb="select"] *::before,
+    [data-theme="dark"] [data-testid="stSelectbox"] [data-baseweb="select"] *::after {
+        background: #2B0C00 !important;
+        background-color: #2B0C00 !important;
+        border-color: #2B0C00 !important;
+    }
+
     </style>
     """,
     unsafe_allow_html=True,
 )
+
+st.html(
+    """
+    <script>
+    (() => {
+        const root = document.documentElement;
+
+        function resolveColor(value) {
+            if (!value) return "";
+            const probe = document.createElement("span");
+            probe.style.color = value;
+            probe.style.display = "none";
+            document.body.appendChild(probe);
+            const resolved = getComputedStyle(probe).color;
+            probe.remove();
+            return resolved;
+        }
+
+        function isDarkColor(value) {
+            const numbers = resolveColor(value).match(/[\\d.]+/g);
+            if (!numbers || numbers.length < 3) return false;
+            const [r, g, b] = numbers.slice(0, 3).map(Number);
+            return (0.2126 * r + 0.7152 * g + 0.0722 * b) < 110;
+        }
+
+        function syncTheme() {
+            const rootStyle = getComputedStyle(root);
+            const themeBackground = rootStyle.getPropertyValue("--background-color").trim();
+            const header = document.querySelector('[data-testid="stHeader"]');
+            const fallback = header ? getComputedStyle(header).backgroundColor : "";
+            const nextTheme = isDarkColor(themeBackground || fallback) ? "dark" : "light";
+            if (root.dataset.theme !== nextTheme) root.dataset.theme = nextTheme;
+        }
+
+        syncTheme();
+        window.setInterval(syncTheme, 400);
+    })();
+    </script>
+    """,
+    unsafe_allow_javascript=True,
+)
 st.title("學術簡報 Prompt 產生器")
-st.info("系統固定以實驗室教授與成員為報告對象，並自動套用 NanoSTLab 實驗室模板規則。")
 
 with st.form("presentation_form"):
     st.subheader("一、簡報需求")
