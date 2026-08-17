@@ -107,7 +107,9 @@ def test_prompt_adds_repeated_section_transition_slides():
     assert "標題 top 超過 65.9 pt" in prompt
     assert "原生箭頭／connector" in prompt
     assert "真正 dashed outline" in prompt
-    assert "每張結果頁至少將一個結論關鍵詞或關鍵數值加粗" in prompt
+    assert "一般正文、說明句、項目內容、圖說與引用必須使用 Regular" in prompt
+    assert "正文粗體字數不得超過約 15%" in prompt
+    assert "不得把整個文字框、整段或整頁設為粗體" in prompt
     assert "不得小於 24 pt" in prompt
     assert "禁止直接輸入 □、■、▪、• 字元冒充項目符號" in prompt
     assert "四個主章節下各有 1–3 個從研究內容推導的子標題" in prompt

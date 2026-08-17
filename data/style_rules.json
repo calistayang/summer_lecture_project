@@ -291,9 +291,12 @@
     "long_title_minimum_pt": 40,
     "body_pt": 24,
     "minimum_body_pt": 24,
+    "body_weight": "regular",
+    "bold_scope": "粗體只用於投影片標題、Outline 當前主章節、短 callout 標頭，以及每張結果頁最多一個結論關鍵詞或關鍵數值；一般正文、說明句、項目內容、圖說與引用一律使用 regular。不得把整個文字框、整段或整頁設成粗體。",
+    "maximum_bold_body_ratio": "正文可見字數的 15% 以下；不含投影片標題與 Outline 主章節標籤",
     "caption_pt": "16-20",
     "reference_pt": "12-14",
-    "rule": "優先精簡或拆頁，不得為了塞入內容而持續縮小字體。長標題最低約 40 pt；一般正文、項目清單與圖旁結論不得低於 24 pt。只有 caption 16-20 pt 與 citation 12-14 pt 可以更小。"
+    "rule": "優先精簡或拆頁，不得為了塞入內容而持續縮小字體。長標題最低約 40 pt；一般正文、項目清單與圖旁結論不得低於 24 pt。只有 caption 16-20 pt 與 citation 12-14 pt 可以更小。一般正文預設 regular，粗體只能局部強調短關鍵詞或關鍵數值，不得整段全粗。"
   },
   "slide_size": {
     "aspect_ratio": "16:9",
