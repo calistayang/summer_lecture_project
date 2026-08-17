@@ -357,7 +357,7 @@ with st.form("presentation_form"):
     st.subheader("一、簡報需求")
     col1, col2 = st.columns(2)
     topic = col1.text_input("主題 *")
-    duration = col2.number_input("報告時間（分鐘）*", 1, 180, 10)
+    duration = col2.number_input("報告時間（分鐘）*", 1, 60, 10)
     pages = col1.number_input("內容投影片頁數（不含模板封面）*", 8, 50, 8)
     language = col2.selectbox("語言 *", ["繁體中文", "英文", "中英雙語"])
 
