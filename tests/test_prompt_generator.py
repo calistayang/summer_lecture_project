@@ -94,3 +94,8 @@ def test_prompt_adds_repeated_section_transition_slides():
     assert "由上往下單欄排列、靠左對齊" in prompt
     assert "不得改成橫向並排" in prompt
     assert "Speaker Notes:" not in prompt
+    assert "每張內容頁只能改寫模板原有 Title 2" in prompt
+    assert "標題 top 超過 65.9 pt" in prompt
+    assert "原生箭頭／connector" in prompt
+    assert "真正 dashed outline" in prompt
+    assert "每張結果頁至少將一個結論關鍵詞或關鍵數值加粗" in prompt

@@ -260,6 +260,14 @@
     "layout_variation_rule": "相鄰內容頁不得連續使用完全相同的構圖；依內容輪替大型主圖、左圖右文、左文右圖、左右比較、流程、機制圖與全寬結果圖，但所有版型仍須遵守同一模板 shell。",
     "rule": "有 source figure 時，figure 優先於文字摘要。主圖應占安全內容區約 55%-70%，不可縮成小圖。圖表與文字需形成清楚的閱讀順序，保留充足留白。"
   },
+  "scientific_annotation_logic": {
+    "title_hard_rule": "每張內容頁只可改寫模板原有 Title 2。標題必須完整位於頂部藍黃分隔線之上並沿用原始座標與尺寸；標題 top 超過 65.9 pt、掉入內容區、另建文字框或壓在線條下方皆為失敗。",
+    "arrow_trigger": "流程、因果、溫度或時間演變、before/after、多圖閱讀順序出現時，必須使用至少一個可編輯的原生箭頭或 connector。箭頭不得穿越圖片、文字、座標軸或圖例，不得只使用文字箭頭符號。",
+    "dashed_highlight_trigger": "至少一張關鍵結果頁使用可編輯的細虛線矩形框；透明填滿、1-2 pt dashed outline，只框決定性圖區並搭配一個短標籤。不得使用實線代替或大面積裝飾框。",
+    "text_emphasis_trigger": "每張結果頁至少將一個結論關鍵詞或關鍵數值加粗；技術機制可使用技術藍，負向漂移、劣化或風險才使用紅色。不得整段全粗、整頁同色或只強調標題。",
+    "narrative_order": "每張圖像頁先建立閱讀起點，再利用箭頭或空間順序指出比較與因果，最後以粗體或重點色落到結論。所有標註均須服務科學敘事，不得作為裝飾。",
+    "reference_evidence": "兩份優良簡報均大量使用真正的 dashed outline、arrowhead、局部粗體與重點色；只借用其標註邏輯，不複製其研究內容。"
+  },
   "color_palette": {
     "primary_blue": "#376092",
     "technical_emphasis_blue": "#0000FF",

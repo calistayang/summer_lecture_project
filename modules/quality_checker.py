@@ -20,5 +20,14 @@ def check_final_prompt(prompt: str, user_inputs: dict) -> dict:
     for label in ["研究背景", "研究方法", "研究結果", "結論"]:
         if label not in prompt:
             errors.append(f"最終 Prompt 未涵蓋：{label}")
+    for rule in [
+        "每張內容頁只能改寫模板原有 Title 2",
+        "標題 top 超過 65.9 pt",
+        "原生箭頭／connector",
+        "真正 dashed outline",
+        "每張結果頁至少將一個結論關鍵詞或關鍵數值加粗",
+    ]:
+        if rule not in prompt:
+            errors.append(f"最終 Prompt 缺少硬性視覺規則：{rule}")
     return {"passed": not errors, "errors": errors, "slide_count": len(slides)}
 

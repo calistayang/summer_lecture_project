@@ -78,6 +78,15 @@ def generate_final_prompt(user_inputs: dict, style_rules: dict, analysis: dict) 
         ])
     unused = [img["filename"] for img in images if img["filename"] not in used_images]
     lines.append("Unused Images: " + (", ".join(unused) if unused else "無"))
+    lines.extend([
+        "",
+        "## 交付前硬性 QA（任一項失敗就必須修正，不得交付）",
+        "1. 逐頁檢查標題物件：每張內容頁只能改寫模板原有 Title 2；標題必須位於頂部藍黃分隔線之上，沿用模板座標與尺寸。任何標題 top 超過 65.9 pt、掉入內容區、另建標題文字框或壓在線條下方，都判定失敗。",
+        "2. 檢查原生 PPTX 物件：只要頁面包含流程、因果、時間順序、before/after 或多圖閱讀順序，就必須至少有一個可編輯的原生箭頭／connector；不可只用文字箭頭符號代替。整份簡報若有多圖頁但箭頭端點數為 0，判定失敗。",
+        "3. 至少一張關鍵結果頁必須使用可編輯的細虛線矩形框，透明填滿，只框住決定性圖區並搭配短標籤；結果頁達 3 張以上但整份簡報沒有真正 dashed outline，判定失敗。",
+        "4. 每張結果頁至少將一個結論關鍵詞或關鍵數值加粗，必要時再使用技術藍或警示紅；不可整段全粗、整頁同色，也不可只改標題顏色。",
+        "5. 箭頭、虛線框、粗體與重點色必須服務科學敘事：先指定閱讀起點，再指出順序／差異，最後落到結論；不得當成裝飾。",
+    ])
     return "\n".join(lines)
 
 
@@ -115,19 +124,25 @@ def _slide_content(
 def _visual_rules_summary(style_rules: dict) -> list[str]:
     typography = style_rules.get("typography", {})
     colors = style_rules.get("color_palette", {})
+    geometry = style_rules.get("template_geometry", {})
     if not isinstance(typography, dict):
         typography = {}
     if not isinstance(colors, dict):
         colors = {}
+    if not isinstance(geometry, dict):
+        geometry = {}
     return [
         "- 直接沿用提供的 PowerPoint 模板母片與既有版面，不重畫頁首頁尾。",
+        f"- 【標題硬規則】每張內容頁只可改寫模板原有 Title 2，不得新增或移動標題框。{geometry.get('title_placeholder', '標題必須位於頂部固定框線與藍黃分隔線之上。')}",
+        "- 標題必須完整位於頂部藍黃分隔線之上；標題物件 top 不得超過 65.9 pt，內容圖片、正文與 callout 則必須位於分隔線下方。",
         f"- 標題約 {typography.get('title_pt', 48)} pt；主文約 {typography.get('body_pt', 24)} pt；引用約 {typography.get('reference_pt', '10–11')} pt。",
         f"- 技術重點使用 {colors.get('technical_emphasis_blue', '#0000FF')}；差異或警告使用 {colors.get('warning_red', '#FF0000')}；不可過量使用。",
+        "- 每張結果頁至少加粗一個結論關鍵詞或關鍵數值；技術機制可用藍色，負向漂移、劣化或風險才用紅色。不得整段全粗或整頁同色。",
         "- 每段開始前插入同版章節導覽頁：目前段落黑色 #000000，其餘段落淺灰 #BFBFBF；所有文字位置固定不變。",
         "- 圖像優先：一頁一個結論、一張主圖；正文不超過 60 個中文字或 35 個英文單字，最多 3 個短標籤。",
-        "- 流程圖依閱讀順序排列，箭頭只表示時間、流程或因果，統一由左至右或由上至下，不可穿過圖片或文字。",
+        "- 流程、因果、溫度／時間演變、before/after 或多圖閱讀順序必須使用可編輯的原生箭頭／connector；統一由左至右或由上至下，不可穿過圖片或文字，也不可只用『→』字元假裝箭頭。",
         "- 標籤放在圖片留白或圖片外側，不可遮住座標軸、圖例、數據、元件結構或重要特徵。",
-        "- 需要強調時只框一個重點區域，使用細虛線矩形與一個短標籤，不得使用大片裝飾框。",
+        "- 關鍵結果頁必須使用至少一個可編輯的細虛線矩形：透明填滿、1–2 pt outline、真正 dashed line，只框決定性圖區並搭配一個短標籤；不得使用實線或大片裝飾框。",
         "- 多圖比較必須等高、對齊、間距一致；兩圖左右比較，三圖用水平步驟或一主兩輔。",
     ]
 
@@ -144,11 +159,16 @@ def _design_instructions(section: str, has_uploaded_image: bool) -> str:
             "不放圖片、段落說明或額外裝飾。"
         )
     image_source = "優先使用指定圖片" if has_uploaded_image else "優先從原始研究報告選取與本頁結論直接相關的圖"
-    return (
+    base = (
         f"{image_source}作為主視覺；先決定圖片閱讀順序，再加入必要箭頭。"
         "可見正文不超過 60 個中文字或 35 個英文單字，最多 3 個短標籤；"
         "文字放在圖片留白或外側，不遮住科學資訊；只對一個關鍵區域使用細虛線框。"
     )
+    if section == "methods":
+        return base + "若本頁包含兩個以上製程或量測步驟，必須用可編輯原生箭頭連接，清楚標示由左至右或由上至下的順序。"
+    if section == "results":
+        return base + "必須將至少一個結論關鍵詞或關鍵數值加粗；有比較或多圖順序時加入原生箭頭，並用一個透明細虛線框標出最支持結論的圖區。"
+    return base + "將最重要的一個詞組加粗；只有技術機制或負向風險需要時才分別使用藍色或紅色。"
 
 def _split_content(content: str, count: int) -> list[str]:
     if count <= 1:
