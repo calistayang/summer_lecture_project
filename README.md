@@ -41,19 +41,13 @@
 
 ## 風格參考
 
-`data/style_rules.json` 依照兩份實驗室優良簡報整理：
-
-- 主要參考：`ITRI-Meeting_Ming-Chun-Hong_20201119_Quantum-Computing_new.pptx`，使用 16:9 比例與新版實驗室視覺系統。
-- 輔助參考：`Group-Meeting_Ming-Chun-Hong_20181220.pptx`，只參考學術內容節奏，不沿用其 4:3 比例。
-
-主要版面規則包括約 48–53 pt 標題、24–27 pt 主文、10–11 pt 引用，以及藍色技術重點、紅色差異或警告、固定頁首頁尾和右下頁碼。
+`data/style_rules.json` 依照兩份實驗室優良簡報整理，主要版面規則包括約 48–53 pt 標題、24–27 pt 主文、10–11 pt 引用，以及藍色技術重點、紅色差異或警告、固定頁首頁尾和右下頁碼。
 
 ## 成員分工
 
-- 成員一：`app.py`、`validators.py`、`quality_checker.py`、`integration.py`、介面整合與整體測試。
+- 成員一：`app.py`、`validators.py`、`quality_checker.py`、`integration.py`、介面整合與整體測試，及最後所有排版確認及優化。
 - 成員二：檢查及維護 `data/style_rules.json`，確認規則符合實驗室優良簡報與固定模板。
 - 成員三：改進 `content_analyzer.py` 與 `prompt_generator.py`，提高摘要、分頁、圖片配對及逐頁 Prompt 品質；不得改變既有函式介面。
-- `teammate_original/academic_presentation_generator.py` 保留成員三原始附件，只作比較參考，不直接接入執行流程。
 
 ## 本機安裝與執行（開發或內部資料使用）
 
@@ -130,15 +124,6 @@ Streamlit 介面讓使用者輸入：
 3. Prompt 中列出的所有研究圖片。
 4. 實驗室 PowerPoint 模板。
 
-可以另外告訴 AI：
-
-```text
-請嚴格依照 final_prompt.txt 製作內容頁，只能使用我提供的研究資料與圖片。
-請直接使用我上傳的實驗室 PowerPoint 模板建立簡報，不要另外仿製一套模板。
-保留模板既有封面、母片、Logo、頁首、頁尾、固定圖案與頁碼位置。
-內容頁從 Outline 開始，所有內容保持可編輯，不可把整頁轉成圖片。
-```
-
 ## 資料契約
 
 範例位於 `data/samples/`。
@@ -159,46 +144,6 @@ Streamlit 介面讓使用者輸入：
 
 包含 `sections`、`images` 與 `warnings`。圖片實體檔存在 `outputs/uploads/`，JSON 只保存安全檔名與描述。
 
-## Git/GitHub 協作
-
-開始新工作前，先從最新 `main` 建立自己的分支：
-
-```powershell
-git switch main
-git pull origin main
-git switch -c member-name-task
-```
-
-修改完成後：
-
-```powershell
-git status
-git add <修改的檔案>
-git commit -m "說明本次修改"
-git push -u origin member-name-task
-```
-
-再到 GitHub 建立 Pull Request。不要直接在已經合併的舊分支繼續修改，也不要 commit `.venv`、上傳圖片或 `outputs` 執行結果。
-
-## Streamlit Community Cloud 部署與更新
-
-第一次部署：
-
-1. 將可展示的版本合併到 GitHub 的 `main` 分支。
-2. 使用 GitHub 帳號登入 [Streamlit Community Cloud](https://share.streamlit.io/)。
-3. 選擇此專案的 repository、`main` 分支及入口檔案 `app.py`。
-4. 設定未被使用的固定子網域，並按下 `Deploy`。
-5. 部署成功後，把固定網址補到本 README 的「線上使用」章節。
-
-後續更新不需要更換網址。將通過測試的修改合併並推送至部署使用的分支後，Streamlit Community Cloud 會自動重新部署：
-
-```powershell
-git switch main
-git pull origin main
-```
-
-若部署失敗，可從 Streamlit Community Cloud 的 `Manage app` 查看執行紀錄。正式公開前，請先確認實驗室模板、識別圖案與風格規則是否取得公開展示授權。
-
 ## 常見問題
 
 - 一般使用者可直接開啟固定網址，不需要安裝 Python、VS Code 或下載 GitHub 專案。
@@ -208,7 +153,3 @@ git pull origin main
 - AI 看到圖片檔名不代表已取得圖片，必須把原始圖片一起上傳。
 - 不提供來源時，Prompt 會標示「待補」，禁止捏造引用與數據。
 - 模板封面不計入 Streamlit 設定的內容頁數。
-
-## Docker
-
-目前不加入 Docker。本機展示及 Streamlit Community Cloud 使用 `requirements.txt` 即可；只有老師明確要求容器，或三位成員的系統環境持續無法統一時，再評估加入 Dockerfile。
