@@ -24,3 +24,10 @@ def test_invalid_page_count_is_rejected():
     data["requirements"]["pages"] = 2
     assert any("頁數" in error for error in validate_user_inputs(data))
 
+
+def test_image_description_is_optional():
+    data = valid_input()
+    data["images"] = [{"filename": "result.png", "description": ""}]
+
+    assert validate_user_inputs(data) == []
+

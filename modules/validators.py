@@ -53,8 +53,6 @@ def validate_user_inputs(data: dict) -> list[str]:
         filename = str(image.get("filename", ""))
         if Path(filename).suffix.lower() not in ALLOWED_IMAGE_EXTENSIONS:
             errors.append(f"圖片格式不支援：{filename}")
-        if not str(image.get("description", "")).strip():
-            errors.append(f"請填寫圖片說明：{filename}")
     return errors
 
 

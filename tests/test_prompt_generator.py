@@ -54,6 +54,8 @@ def test_prompt_requires_ai_to_use_supplied_template():
     assert "完整閱讀" in prompt and "原始研究報告" in prompt
     assert "Figure、Table 與圖片" in prompt
     assert "不得自行上網搜尋、生成或替換研究圖片" in prompt
+    assert "使用者不需要另外提供圖片說明" in prompt
+    assert "若與圖片實際內容不符，必須移至正確頁面" in prompt
     assert "直接使用" in prompt and "實驗室 PowerPoint 模板" in prompt
     assert "保留模板既有封面、母片、Logo、頁首、頁尾" in prompt
     assert "套用模板既有的內容版面" in prompt
