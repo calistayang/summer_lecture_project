@@ -389,15 +389,12 @@ with st.form("presentation_form"):
     )
 
     st.subheader("三、圖片")
-    uploaded_files = st.file_uploader("上傳 PNG、JPG 或 JPEG（每張最多 10 MB）", type=["png", "jpg", "jpeg"], accept_multiple_files=True)
-    image_details = []
-    for index, uploaded in enumerate(uploaded_files):
-        st.markdown(f"**圖片 {index + 1}：{uploaded.name}**")
-        c1, c2 = st.columns(2)
-        image_type = c1.selectbox("圖片類型", ["實驗結果圖", "流程圖", "設備照片", "數據圖表", "其他"], key=f"type_{index}_{uploaded.name}")
-        purpose = c2.text_input("用途", value="補充本頁重點", key=f"purpose_{index}_{uploaded.name}")
-        description = st.text_input("圖片說明 *", key=f"description_{index}_{uploaded.name}")
-        image_details.append((uploaded, image_type, purpose, description))
+    st.caption("只需上傳圖片；簡報 AI 會依圖片內容、圖說、座標軸與研究文字，自動判斷使用頁面及說明。")
+    uploaded_files = st.file_uploader(
+        "上傳 PNG、JPG 或 JPEG（每張最多 10 MB）",
+        type=["png", "jpg", "jpeg"],
+        accept_multiple_files=True,
+    )
 
     submitted = st.form_submit_button("開始分析", type="primary")
 
@@ -405,7 +402,7 @@ if submitted:
     image_records = []
     upload_errors = []
     UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
-    for uploaded, image_type, purpose, description in image_details:
+    for uploaded in uploaded_files:
         data = uploaded.getvalue()
         if len(data) > MAX_IMAGE_BYTES:
             upload_errors.append(f"{uploaded.name} 超過 10 MB。")
@@ -417,9 +414,10 @@ if submitted:
         image_records.append({
             "filename": Path(uploaded.name).name,
             "stored_filename": safe_name,
-            "type": image_type,
-            "description": description.strip(),
-            "purpose": purpose.strip(),
+            "type": "自動判讀",
+            "description": "由簡報 AI 依圖片內容、圖說、座標軸、標籤及研究文字自動判讀。",
+            "purpose": "由簡報 AI 自動選擇最適合的投影片並撰寫必要說明。",
+            "auto_analyze": True,
         })
 
     user_inputs = {

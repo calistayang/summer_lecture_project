@@ -89,7 +89,10 @@ def analyze_content(user_inputs: dict) -> dict:
         image_type = _inline(raw_image.get("type", "其他")) or "其他"
         description = _inline(raw_image.get("description", ""))
         purpose = _inline(raw_image.get("purpose", "補充說明")) or "補充說明"
-        section, reason = _match_image(image_type, description, purpose, sections)
+        if raw_image.get("auto_analyze"):
+            section, reason = "results", "先配置至研究結果；簡報 AI 必須依實際圖片內容重新判斷並可調整頁面"
+        else:
+            section, reason = _match_image(image_type, description, purpose, sections)
         images.append({
             "filename": str(raw_image.get("filename", "")).strip(),
             "type": image_type,
