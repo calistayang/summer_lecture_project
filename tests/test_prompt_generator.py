@@ -61,6 +61,12 @@ def test_prompt_requires_ai_to_use_supplied_template():
     assert "套用模板既有的內容版面" in prompt
     assert "已套用實驗室模板的可編輯 .pptx" in prompt
     assert "不得把整頁轉成單一圖片" in prompt
+    assert "## 執行契約與規則優先順序" in prompt
+    assert "完成初稿後必須逐頁執行本文件末尾的硬性 QA" in prompt
+    assert "禁止參考、延續或模仿先前 AI 生成的簡報" in prompt
+    assert "低順位規則不得破壞高順位規則" in prompt
+    assert "允許依實際 Figure 與文字長度彈性調整" in prompt
+    assert "本次沒有另外上傳獨立圖片" in prompt
 
 
 def test_prompt_adds_repeated_section_transition_slides():
@@ -90,7 +96,10 @@ def test_prompt_adds_repeated_section_transition_slides():
     assert "僅「研究結果」使用黑色 #000000" in prompt
     assert "僅「結論與未來工作」使用黑色 #000000" in prompt
     assert "淺灰 #BFBFBF" in prompt
-    assert "研究背景\n研究方法\n研究結果\n結論與未來工作" in prompt
+    assert "研究背景\n  子標題：研究背景內容" in prompt
+    assert "研究方法\n  子標題：研究方法內容" in prompt
+    assert "研究結果\n  子標題：研究結果內容" in prompt
+    assert "結論與未來工作\n  子標題：研究結論內容" in prompt
     assert "由上往下單欄排列、靠左對齊" in prompt
     assert "不得改成橫向並排" in prompt
     assert "Speaker Notes:" not in prompt
@@ -99,3 +108,9 @@ def test_prompt_adds_repeated_section_transition_slides():
     assert "原生箭頭／connector" in prompt
     assert "真正 dashed outline" in prompt
     assert "每張結果頁至少將一個結論關鍵詞或關鍵數值加粗" in prompt
+    assert "不得小於 24 pt" in prompt
+    assert "禁止直接輸入 □、■、▪、• 字元冒充項目符號" in prompt
+    assert "四個主章節下各有 1–3 個從研究內容推導的子標題" in prompt
+    assert "不得框大片空白" in prompt
+    assert "\nTitle: 研究結果\n" not in prompt
+    assert "子標題：研究背景內容" in prompt
