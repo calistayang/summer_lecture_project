@@ -4,6 +4,27 @@
 
 系統本身不直接產生 `.pptx`。正確流程是：將 Prompt、原始報告及圖片、與實驗室 PPT 模板一起交給支援編輯 PPT 的 AI，讓 AI 直接使用模板母片與版面配置產生最終可編輯簡報。
 
+## 線上使用（推薦）
+
+本專案可部署至 Streamlit Community Cloud，並透過固定網址展示與使用。部署完成後，使用者只需要瀏覽器，不需要下載專案、安裝 Python 或設定 VS Code。
+
+> **固定網址：[開啟 NanoSTLab 學術簡報 Prompt 產生器](https://nanostlab-prompt-generator.streamlit.app/)**
+
+線上使用流程：
+
+1. 開啟固定網址。
+2. 填寫簡報需求與四個部分的研究內容。
+3. 視需要上傳研究圖片。
+4. 按下「開始分析」，並下載系統產生的 `final_prompt.txt`。
+5. 將 `final_prompt.txt`、原始研究文件、研究圖片及實驗室 PowerPoint 模板一起交給支援製作簡報的 AI。
+
+### 資料安全提醒
+
+- 本系統目前是課程專題與實驗室使用原型。
+- 公開展示版本請勿輸入機密、尚未發表或禁止上傳至外部雲端服務的研究資料。
+- 部署於 Streamlit Community Cloud 時，使用者輸入與上傳檔案會由雲端環境處理。
+- 若要處理未公開研究資料，應改用本機版本或由實驗室管理的內部伺服器。
+
 ## 核心規則
 
 - 固定以「實驗室教授與成員」為報告對象。
@@ -34,7 +55,9 @@
 - 成員三：改進 `content_analyzer.py` 與 `prompt_generator.py`，提高摘要、分頁、圖片配對及逐頁 Prompt 品質；不得改變既有函式介面。
 - `teammate_original/academic_presentation_generator.py` 保留成員三原始附件，只作比較參考，不直接接入執行流程。
 
-## 安裝與執行
+## 本機安裝與執行（開發或內部資料使用）
+
+只有需要修改程式、執行測試，或不希望研究資料經過公開雲端環境時，才需要在本機安裝。
 
 ### 1. 建立環境
 
@@ -157,8 +180,28 @@ git push -u origin member-name-task
 
 再到 GitHub 建立 Pull Request。不要直接在已經合併的舊分支繼續修改，也不要 commit `.venv`、上傳圖片或 `outputs` 執行結果。
 
+## Streamlit Community Cloud 部署與更新
+
+第一次部署：
+
+1. 將可展示的版本合併到 GitHub 的 `main` 分支。
+2. 使用 GitHub 帳號登入 [Streamlit Community Cloud](https://share.streamlit.io/)。
+3. 選擇此專案的 repository、`main` 分支及入口檔案 `app.py`。
+4. 設定未被使用的固定子網域，並按下 `Deploy`。
+5. 部署成功後，把固定網址補到本 README 的「線上使用」章節。
+
+後續更新不需要更換網址。將通過測試的修改合併並推送至部署使用的分支後，Streamlit Community Cloud 會自動重新部署：
+
+```powershell
+git switch main
+git pull origin main
+```
+
+若部署失敗，可從 Streamlit Community Cloud 的 `Manage app` 查看執行紀錄。正式公開前，請先確認實驗室模板、識別圖案與風格規則是否取得公開展示授權。
+
 ## 常見問題
 
+- 一般使用者可直接開啟固定網址，不需要安裝 Python、VS Code 或下載 GitHub 專案。
 - 沒有圖片仍可執行，系統會產生純文字版 Prompt 並加入警告。
 - 找不到 `data/style_rules.json` 時，系統會顯示可讀的錯誤訊息。
 - 系統產生的是簡報製作 Prompt，不是最終 `.pptx`。
