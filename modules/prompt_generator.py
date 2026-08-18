@@ -20,6 +20,9 @@ def generate_final_prompt(user_inputs: dict, style_rules: dict, analysis: dict) 
         f"主題：{req['topic']}",
         f"對象：{req['audience']}｜時間：{req['duration_minutes']} 分鐘｜內容頁數：{pages}（不含模板封面）｜語言：{req['language']}",
         "",
+        # 規則契約：先把資料正確性、模板限制、硬性 QA 與逐頁需求排出
+        # 明確優先順序。AI 遇到互相衝突的指令時，必須保留高順位規則，
+        # 避免重要的模板或品質要求在組合最終 Prompt 時被省略。
         *_execution_contract(req, images),
         "",
         "請先完整閱讀與本 Prompt 一起提供的原始研究報告；報告是內容、數據、公式與引用的主要依據，下方逐頁文字是規劃提示。",
@@ -83,6 +86,8 @@ def generate_final_prompt(user_inputs: dict, style_rules: dict, analysis: dict) 
         ])
     unused = [img["filename"] for img in images if img["filename"] not in used_images]
     lines.append("Unused Images: " + (", ".join(unused) if unused else "無"))
+    # 硬性 QA（Quality Assurance，品質保證）：這些不是美化建議，而是
+    # 交付前必須逐頁通過的驗收條件。任一條失敗，AI 都要先修正再輸出 PPTX。
     lines.extend([
         "",
         "## 交付前硬性 QA（任一項失敗就必須修正，不得交付）",
@@ -172,6 +177,7 @@ def _derive_outline_text(content_map: dict[str, str]) -> str:
 
 
 def _execution_contract(req: dict, images: list[dict]) -> list[str]:
+    """建立最終 Prompt 的規則契約，並定義發生衝突時的處理優先順序。"""
     image_instruction = (
         f"本次另有 {len(images)} 張上傳圖片；先辨識內容與來源，再依科學意義配置，逐頁建議不是不可更動的綁定。"
         if images
