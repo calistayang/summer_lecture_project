@@ -45,9 +45,9 @@
 
 ## 成員分工
 
-- 成員一：`app.py`、`validators.py`、`quality_checker.py`、`integration.py`、介面整合與整體測試，及最後所有排版確認及優化。
-- 成員二：檢查及維護 `data/style_rules.json`，確認規則符合實驗室優良簡報與固定模板。
-- 成員三：改進 `content_analyzer.py` 與 `prompt_generator.py`，提高摘要、分頁、圖片配對及逐頁 Prompt 品質；不得改變既有函式介面。
+- 成員一 楊馨惠：`app.py`、`validators.py`、`quality_checker.py`、`integration.py`、介面整合與整體測試，及最後所有排版確認及優化。
+- 成員二 吳芷暄：檢查及維護 `data/style_rules.json`，確認規則符合實驗室優良簡報與固定模板。
+- 成員三 李秉奇：改進 `content_analyzer.py` 與 `prompt_generator.py`，提高摘要、分頁、圖片配對及逐頁 Prompt 品質；不得改變既有函式介面。
 
 ## 本機安裝與執行（開發或內部資料使用）
 
